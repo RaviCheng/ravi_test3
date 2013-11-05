@@ -531,7 +531,7 @@ if (isset($phptool["xmlfile"])) {
                                 $author = $violation['author'];
                                 //$gitauth[$author] = (!isset($gitauth[$author]))? 0:$gitauth[$author]+1;
 
-                                $gitauth[strval($author)] = (! isset($gitauth[strval($author)])) ? 0 : $gitauth[strval(
+                                $gitauth[strval($author)] = (! isset($gitauth[strval($author)])) ? 1 : $gitauth[strval(
                                         $author
                                     )] + 1;
 

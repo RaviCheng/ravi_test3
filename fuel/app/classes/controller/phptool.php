@@ -113,17 +113,17 @@ class Controller_phptool extends Controller
         $data['phptool']['type'] = static::$type;
 
         // 開始計算(依照使用者出現次數，出現一次加一，因來源檔出現一次只會顯示一行錯誤）
+        $data["sum"] = 0;
         foreach ($xmlDir as $key => $value) {
 
             $xmlfile = simplexml_load_file(static::$xmlPath.$key.'phpmd.xml');
             $count = 0;
-            $data["sum"] = 0;
             foreach($xmlfile->file as $item){
                 $count++;
                 foreach($item->violation as $violation){
                     //統計使用者
                     $author = strval($violation['author']);
-                    $gitauth[$author] = (! isset($gitauth[$author])) ? 0 : $gitauth[
+                    $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[
                             $author
                         ] + 1;
 
