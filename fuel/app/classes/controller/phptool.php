@@ -92,7 +92,7 @@ class Controller_phptool extends Controller
             }
         }
 
-        return View::forge('phptool/index', $data);
+        return View::forge('phptool/index', $data)->auto_filter(false);
     }
 
 
