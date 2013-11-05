@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pmd version="1.5.0" timestamp="2013-11-01T10:26:27+08:00">
+  <file name="/var/www/project001/m/P0002/fuel/app/classes/controller/guestbookcrud.php">
+    <violation beginline="120" author="imagine10255">
+       Avoid unused local variables such as '$smarty'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/m/P0002/fuel/app/classes/model/bbsjob.php">
+    <violation beginline="46" author="imagine10255">
+       Avoid unused local variables such as '$insert_id'.
+    </violation>
+    <violation beginline="46" author="imagine10255">
+       Avoid unused local variables such as '$rows_affected'.
+    </violation>
+    <violation beginline="60" author="imagine10255">
+       Avoid unused local variables such as '$result'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/m/P0002/fuel/app/classes/model/guestbook.php">
+    <violation beginline="90" author="imagine10255">
+       Avoid unused local variables such as '$insert_id'.
+    </violation>
+    <violation beginline="90" author="imagine10255">
+       Avoid unused local variables such as '$rows_affected'.
+    </violation>
+    <violation beginline="102" author="imagine10255">
+       Avoid unused local variables such as '$result'.
+    </violation>
+    <violation beginline="116" author="imagine10255">
+       Avoid unused local variables such as '$result'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/m/P0002/fuel/app/classes/model/guestbookauth.php">
+    <violation beginline="101" author="imagine10255">
+       Avoid unused local variables such as '$insert_id'.
+    </violation>
+    <violation beginline="101" author="imagine10255">
+       Avoid unused local variables such as '$rows_affected'.
+    </violation>
+    <violation beginline="112" author="imagine10255">
+       Avoid unused local variables such as '$result'.
+    </violation>
+    <violation beginline="126" author="imagine10255">
+       Avoid unused local variables such as '$result'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/m/P0002/fuel/app/classes/model/panes.php">
+    <violation beginline="25" author="imagine10255">
+       Avoid unused local variables such as '$results'.
+    </violation>
+  </file>
+</pmd>

@@ -1,0 +1,1798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+  <duplication lines="29" tokens="68">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/LinksController.php" line="53"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/IndexController.php" line="55"/>
+    <codefragment>    public function glistAction(){
+        $sql = sprintf("select distinct website from %s order by website", $this-&gt;m_table);
+        $this-&gt;_db['Cm']-&gt;query($sql);
+        
+        echo "&lt;option value=\"\"&gt;choose&lt;/option&gt;";
+        echo "&lt;option value=\"\"&gt;全部&lt;/option&gt;";
+        
+        $data = $this-&gt;_db['Cm']-&gt;get_total_data();
+        foreach($data as $row){
+            echo  sprintf("&lt;option value=\"%s\"&gt;%s&lt;/option&gt;", $row["website"], $row["website"]);
+        }        
+        exit;
+    }
+        
+    /**
+     * dataAction
+     *
+     * 取得表格資料
+     *
+     * @date    2013/4/2 下午4:29:05
+     * @param
+     * @return
+     */
+    public function dataAction(){
+        $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 0 ; // get the requested page
+        $limit = isset($_REQUEST['rows']) ? $_REQUEST['rows'] : 10; // get how many rows we want to have into the grid
+        $sidx = isset($_REQUEST['sidx']) ? $_REQUEST['sidx'] : null; // get index row - i.e. user click to sort
+        $sord = isset($_REQUEST['sord']) ? $_REQUEST['sord'] : 'ASC' ; // get the direction
+        $g = isset($_REQUEST['g']) ? $_REQUEST['g'] : null ; // get the direction
+</codefragment>
+  </duplication>
+  <duplication lines="19" tokens="20">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/LinksController.php" line="132"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/IndexController.php" line="130"/>
+    <codefragment>            $i++;
+        }        
+        
+        echo json_encode($responce);
+        exit;
+    }
+    
+    /**
+     * crudAction
+     *
+     * 對表格進行 新增，刪除，修改等動作
+     *
+     * @date    2013/4/2 下午4:29:16
+     * @param
+     * @return
+     */
+    public function crudAction(){
+        $oper = isset($_REQUEST['oper']) ? $_REQUEST['oper'] : null ; 
+        $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null ; 
+</codefragment>
+  </duplication>
+  <duplication lines="7" tokens="14">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_fee.php" line="286"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/guestbook_mt.php" line="259"/>
+    <codefragment>  if ($_SESSION["alert_msg"] != "") {&#13;
+    js_alert($_SESSION["alert_msg"]);&#13;
+    $_SESSION["alert_msg"] = "";&#13;
+  }  &#13;
+&#13;
+?&gt;&#13;
+  &lt;!--&lt;iframe name='TMP' width='0' height='0'&gt;&lt;/iframe&gt;--&gt;&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="9" tokens="22">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting2.php" line="18"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting3.php" line="19"/>
+    <codefragment>  $db = new dat();&#13;
+  $db-&gt;link_db($inserthost,$insertuserid,$insertuserpasswd,$insertdbase);&#13;
+  $oTable = new go_table;&#13;
+  &#13;
+  //ÅçÃÒ¨ç¦¡ ------------------------------------------------------------------&#13;
+  $chkPrg = checkPrg($workPrg,$_SESSION["login_id"]);&#13;
+&#13;
+  // del action ---------------------------------------------------------------&#13;
+  if ($_GET["act"] != "") {&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="99" tokens="377">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting2.php" line="59"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting3.php" line="78"/>
+    <codefragment>    if ($db-&gt;sql_query($sql) and $db-&gt;num_rows() &gt; 0) {&#13;
+      while ($rows = $db-&gt;nxt_row()) {&#13;
+        $aGroup[$rows["id"]] = $rows["group_name"];&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+&#13;
+  if (date("w") == 0)&#13;
+    $date_w = 7;&#13;
+  else&#13;
+    $date_w = date("w");&#13;
+&#13;
+  $Monday = date("Y-m-d",mktime(0,0,0,date("m"),date("d")-$date_w+1,date("Y")));&#13;
+//³B²z¦~¤ë¶g  &#13;
+  $s_MM = changepostget($_POST["s_MM"],$_GET["s_MM"],$Monday);&#13;
+  $s_WW = changepostget($_POST["s_WW"],$_GET["s_WW"],"");&#13;
+  &#13;
+&#13;
+  $sDate = split("-",$s_MM);&#13;
+  $wToday     = Date("w", mktime(0, 0, 0, $sDate[1], 1, $sDate[0]));&#13;
+  if ($wToday == 0) $wToday = 7;&#13;
+  if ($wToday % 7 == 1) {&#13;
+    $this_month_1_week = Date("W", mktime(0, 0, 0, $sDate[1],1, $sDate[0]));                    //³o­Ó¤ë1¸¹¬O²Ä¤@¶g&#13;
+    $this_month_1_day = date("d", mktime(0, 0, 0, $sDate[1],1, $sDate[0]));&#13;
+  }else { &#13;
+    $this_month_1_week = Date("W", mktime(0, 0, 0, $sDate[1], 1+(8-$wToday), $sDate[0]));        &#13;
+    $this_month_1_day = Date("d", mktime(0, 0, 0, $sDate[1], 1+(8-$wToday), $sDate[0]));        &#13;
+  }&#13;
+  &#13;
+  $this_month_end_week = Date("W", mktime(0, 0, 0, $sDate[1]+1, 1-1, $sDate[0]));    //¥»¤ë³Ì«á¤@¶g    &#13;
+  $nWeeks = $this_month_end_week - $this_month_1_week + 1;&#13;
+&#13;
+  if (trim($s_WW) == "") {&#13;
+    $this_month_today_week     = Date("W", mktime(0, 0, 0, date("m"), date("d"), date("Y")));    //¤µ¤Ñ¬O³o­Ó¤ë²Ä´X¶g    &#13;
+    $s_WW = $this_month_today_week - $this_month_1_week +1;&#13;
+  }&#13;
+&#13;
+  //¬d¸ß°_©l¤é´Á&#13;
+  $period_1_day = date("Y-m-d",mktime(0,0,0,$sDate[1],($this_month_1_day+(7*($s_WW-1))),$sDate[0]));&#13;
+  $period_7_day = date("Y-m-d",mktime(0,0,0,$sDate[1],($this_month_1_day+(7*$s_WW)-1),$sDate[0]));&#13;
+&#13;
+  $oSelect_MM = "&lt;select name='s_MM' onchange='srhForm.submit()';&gt;";&#13;
+  for ($i=6;$i&gt;=0;$i--) {&#13;
+    $c_MM = date("Y-m",mktime(0,0,0,date("m")-$i,1,date("Y")));&#13;
+    if ($c_MM == substr($s_MM,0,7))&#13;
+      $oSelect_MM.= "&lt;option value='".$c_MM."' selected&gt;".$c_MM."&lt;/option&gt;";&#13;
+    else&#13;
+      $oSelect_MM.= "&lt;option value='".$c_MM."'&gt;".$c_MM."&lt;/option&gt;";&#13;
+  }&#13;
+  $oSelect_MM.= "&lt;/select&gt;";&#13;
+&#13;
+  $oSelect_WW= "&lt;select name='s_WW' onchange='srhForm.submit()';&gt;";&#13;
+  for ($i=1;$i &lt; $nWeeks+1;$i++) {&#13;
+    if ($i == $s_WW)&#13;
+      $oSelect_WW.="&lt;option value='".$i."' selected&gt;²Ä".$i."¶g&lt;/option&gt;";&#13;
+    else&#13;
+      $oSelect_WW.="&lt;option value='".$i."'&gt;²Ä".$i."¶g&lt;/option&gt;";;&#13;
+  }&#13;
+  $oSelect_WW.= "&lt;/select&gt;";&#13;
+&#13;
+?&gt;  &#13;
+&lt;html&gt;&#13;
+&lt;head&gt;&#13;
+&lt;?&#13;
+  // css  ---------------------------------------------------------------------&#13;
+  echo "&lt;link href='".$_SESSION["path_css"]."' rel='stylesheet' type='text/css'&gt;\n";&#13;
+  &#13;
+  // js -----------------------------------------------------------------------&#13;
+  echo "&lt;script language='javascript' src='".$_SESSION["path_js"]."' type='text/javascript'&gt;&lt;/script&gt;\n";&#13;
+?&gt;  &#13;
+&lt;/head&gt;&#13;
+&lt;body topmargin='5'&gt;&#13;
+&lt;?&#13;
+  echo "&lt;form method = 'POST' name='srhForm' action='".$workPrg."'&gt;";&#13;
+  $oSelect = "¶}·|¤é´Á:".$oSelect_MM."&amp;nbsp;".$oSelect_WW;&#13;
+  // SQL »yªk  ----------------------------------------------------------------&#13;
+  $where = " where m_date &gt;= '".$period_1_day."' and m_date &lt;= '".$period_7_day."'".$add_sql;&#13;
+  $order = " order by id";  &#13;
+&#13;
+  $sql = "select id,m_date,ms_time,me_time,topic,room,n01,sign from dep_meeting".$where.$order;&#13;
+  // ¤À­¶  --------------------------------------------------------------------&#13;
+  $result = $db-&gt;Set_Page_Parameter($sql,$PageNo,$Show_next,$MaxRows);&#13;
+&#13;
+  //Åã¥Üµ{¦¡¦WºÙ¤Îtitle ¥\¯à --------------------------------------------------&#13;
+  if ($chkPrg["rights"] &gt;= 2)   $act_tag = "&lt;a href='".$actPrg."?act=add'&gt;¸ê®Æ·s¼W&lt;/a&gt;";&#13;
+  else                $act_tag = "&amp;nbsp";&#13;
+  &#13;
+  echo prg_title($chkPrg["name"],$oSelect,$act_tag);&#13;
+  echo "&lt;/form&gt;";&#13;
+&#13;
+  echo $oTable-&gt;start();&#13;
+  echo $oTable-&gt;line();&#13;
+&#13;
+  $oTable-&gt;head_add("¶}·|¤é´Á","60");&#13;
+  $oTable-&gt;head_add("³¡ªù","60");&#13;
+  $oTable-&gt;head_add("¥DÃD","180");&#13;
+  $oTable-&gt;head_add("¤º®e");&#13;
+  $oTable-&gt;head_add("Ã±¦W","60");&#13;
+  if ($chkPrg["rights"] &gt;= 2) { &#13;
+</codefragment>
+  </duplication>
+  <duplication lines="13" tokens="26">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting2.php" line="186"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting3.php" line="209"/>
+    <codefragment>        $oTable-&gt;row_add("&amp;nbsp;".$act_tag,"",$row_basic_color);&#13;
+      } &#13;
+      echo $oTable-&gt;row_show();&#13;
+    }&#13;
+  }&#13;
+&#13;
+  echo $oTable-&gt;line();&#13;
+  echo $oTable-&gt;end();&#13;
+&#13;
+  // msg -------------------------------------------------------------------------------&#13;
+  if ($_SESSION["alert_msg"] != "") {&#13;
+    js_alert($_SESSION["alert_msg"]);&#13;
+    $_SESSION["alert_msg"] = "";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="11" tokens="24">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting2.php" line="188"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_fee3.php" line="148"/>
+    <codefragment>      echo $oTable-&gt;row_show();&#13;
+    }&#13;
+  }&#13;
+&#13;
+  echo $oTable-&gt;line();&#13;
+  echo $oTable-&gt;end();&#13;
+&#13;
+  // msg -------------------------------------------------------------------------------&#13;
+  if ($_SESSION["alert_msg"] != "") {&#13;
+    js_alert($_SESSION["alert_msg"]);&#13;
+    $_SESSION["alert_msg"] = "";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="77" tokens="52">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/work_indication.php" line="25"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/add_achieve.php" line="25"/>
+    <codefragment>    list($id,$ParentID,$WorkLevel,$e_date,$c_date,$b_man,$ahieve_date,$InvestName,$work_content,$g_id,$stats,$aaa,$work_report,$work_indication,$sign,$achieve_man,$important,$distributor)=mysql_fetch_row($db-&gt;rows);&#13;
+    $sql="select group_name from group_data where id='$g_id'";&#13;
+    $g_type=$db-&gt;getautoid($sql);&#13;
+&#13;
+?&gt;&#13;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;&#13;
+&lt;html&gt;&#13;
+&lt;head&gt;&#13;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;&#13;
+&lt;title&gt;審核工作&lt;/title&gt;&#13;
+&lt;/head&gt;&#13;
+&lt;body&gt;&#13;
+&lt;link href="../css/calendar.css" rel="stylesheet" type="text/css"&gt;&#13;
+&lt;script language="JavaScript" src="../js/simplecalendar.js"&gt;&lt;/script&gt;&#13;
+&lt;p align="center"&gt;&#13;
+&lt;form name="FrmData" method="post" action="work_indication_act.php?&lt;?=Url_Parameter1($HTTP_GET_VARS['PageNo'], $HTTP_GET_VARS['gid'], $HTTP_GET_VARS['view_type'], $HTTP_GET_VARS['s_MM'], $HTTP_GET_VARS['Field_Nmae'],$_GET['uid']);?&gt;"&gt;&#13;
+    &lt;table width="63%" border="1"&gt;&#13;
+        &lt;tr&gt; &#13;
+            &lt;td width="22%" bgcolor="#CCCCCC"&gt;預計完工日&lt;/td&gt;&#13;
+            &lt;td width="78%"&gt;&lt;?=$e_date;?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;tr&gt; &#13;
+            &lt;td bgcolor="#CCCCCC"&gt;交付日期&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=$c_date;?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;tr&gt; &#13;
+            &lt;td bgcolor="#CCCCCC"&gt;負責人&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=$b_man;?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;tr&gt; &#13;
+            &lt;td bgcolor="#CCCCCC"&gt;工作類別&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=$g_type;?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;tr&gt; &#13;
+            &lt;td bgcolor="#CCCCCC"&gt;工作內容&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=nl2br($work_content);?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;!--&lt;tr&gt; &#13;
+            &lt;td bgcolor="#CCCCCC"&gt;工作報告&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=nl2br($work_report);?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;--&gt;&#13;
+        &lt;tr&gt;&#13;
+            &lt;td bgcolor="#CCCCCC"&gt;完工日期&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;?=$ahieve_date;?&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+        &lt;tr&gt;&#13;
+            &lt;td bgcolor="#CCCCCC"&gt;工作指示&lt;/td&gt;&#13;
+            &lt;td&gt;&lt;textarea name="work_indication" cols="50" rows="5" id="content" &gt;&lt;?=$work_indication;?&gt;&lt;/textarea&gt;&lt;/td&gt;&#13;
+        &lt;/tr&gt;&#13;
+    &lt;/table&gt;&#13;
+     &lt;br&gt; &#13;
+    &lt;input type="hidden" name="w_id" value="&lt;?=$id;?&gt;"&gt;&#13;
+    &lt;input type="hidden" name="work_group" value="&lt;?=$g_id;?&gt;"&gt;&#13;
+    &lt;input type="hidden" name="stats" value="3"&gt;    &#13;
+    &lt;input type="submit" name="Submit" value="確定"&gt;　　&#13;
+    &lt;input type="button" name="Submit2" value="上一頁" onclick="window.location.href='center_man.php?&lt;?=Url_Parameter1($HTTP_GET_VARS['PageNo'], $HTTP_GET_VARS['gid'], $HTTP_GET_VARS['view_type'], $HTTP_GET_VARS['s_MM'], $HTTP_GET_VARS['Field_Nmae'],$_GET['uid']);?&gt;';"&gt;&#13;
+        &lt;/p&gt;&#13;
+&lt;/form&gt;&#13;
+&lt;iframe name="tmp" height="0" width="0"&gt;&lt;/iframe&gt;&#13;
+&lt;/body&gt;&#13;
+&lt;/html&gt;</codefragment>
+  </duplication>
+  <duplication lines="13" tokens="46">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/phonebook3.php" line="81"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/phonebook1.php" line="87"/>
+    <codefragment>for($i=0;$i&lt; $FlagInfoCount;$i++){&#13;
+    $dep_temp[$FlagInfoGroup[$i]][]=$FlagInfoDep[$i];&#13;
+    $Msn[$FlagInfoGroup[$i]][]=999;&#13;
+    for($j=0;$j&lt; $userdata_count;$j++){        &#13;
+        $dep=$userdata_list[$j]['department'];&#13;
+        if ($dep==$FlagInfoDep[$i]){&#13;
+            $gro=$FlagInfo[$dep]['Group'];&#13;
+            $Msn[$gro][]=$j;&#13;
+        }&#13;
+    }&#13;
+}&#13;
+&#13;
+$Msn_count=(count($Msn[1]) &gt; count($Msn[2]))? count($Msn[1]): count($Msn[2]);&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="22" tokens="80">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_security_act.php" line="90"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting_act3.php" line="88"/>
+    <codefragment>      $sql = "select id,m_date,ms_time,room,topic,content,recorder from dep_security where id = '".$_GET["id"]."'";&#13;
+      $db-&gt;sql_query($sql);&#13;
+      $aList = $db-&gt;nxt_row();&#13;
+    }else {&#13;
+      $aList["m_date"] = date("Y-m-d");&#13;
+      $aList["ms_time"] = date("H:i:s");&#13;
+      $aList["recorder"] = $_SESSION["login_id"];&#13;
+      $aList["room"] = $_SESSION["department"];&#13;
+    }&#13;
+  }&#13;
+&#13;
+  //dep name&#13;
+  $dep_name = $db-&gt;sql_value("select group_name from group_data where id =".$aList["room"]." limit 0,1");&#13;
+&#13;
+  $sql = "select id,nick_name from userdata where department =".$aList["room"]." and stats = 1";&#13;
+  if ($db-&gt;sql_query($sql) and $db-&gt;num_rows() &gt; 0) {&#13;
+    $oSelect_recorder = "&lt;select name='recorder'&gt;";&#13;
+    while ($rows = $db-&gt;nxt_row()) {&#13;
+      if ($rows["id"] == $aList["recorder"])&#13;
+        $oSelect_recorder.=  "&lt;option value='".$rows["id"]."' selected&gt;".$rows["nick_name"]."&lt;/option&gt;";    &#13;
+      else&#13;
+        $oSelect_recorder.=  "&lt;option value='".$rows["id"]."'&gt;".$rows["nick_name"]."&lt;/option&gt;";    &#13;
+</codefragment>
+  </duplication>
+  <duplication lines="11" tokens="41">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_security_act.php" line="165"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting_act3.php" line="162"/>
+    <codefragment>  echo $oList-&gt;line();&#13;
+  echo $oList-&gt;command("&amp;nbsp;",$submit);&#13;
+  echo $oForm-&gt;hidden("act",$_GET["act"]);&#13;
+  echo $oList-&gt;line();&#13;
+  echo $oList-&gt;end();&#13;
+&#13;
+  echo $oForm-&gt;form_end();&#13;
+  //error msg -----------------------------------------------------------------------------&#13;
+  if ($_SESSION["alert_msg"] != "") {&#13;
+    js_alert($_SESSION["alert_msg"]);&#13;
+    $_SESSION["alert_msg"] = "";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="38" tokens="217">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_meeting2.php" line="66"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_security.php" line="67"/>
+    <codefragment>  if (date("w") == 0)&#13;
+    $date_w = 7;&#13;
+  else&#13;
+    $date_w = date("w");&#13;
+&#13;
+  $Monday = date("Y-m-d",mktime(0,0,0,date("m"),date("d")-$date_w+1,date("Y")));&#13;
+//³B²z¦~¤ë¶g  &#13;
+  $s_MM = changepostget($_POST["s_MM"],$_GET["s_MM"],$Monday);&#13;
+  $s_WW = changepostget($_POST["s_WW"],$_GET["s_WW"],"");&#13;
+  &#13;
+&#13;
+  $sDate = split("-",$s_MM);&#13;
+  $wToday     = Date("w", mktime(0, 0, 0, $sDate[1], 1, $sDate[0]));&#13;
+  if ($wToday == 0) $wToday = 7;&#13;
+  if ($wToday % 7 == 1) {&#13;
+    $this_month_1_week = Date("W", mktime(0, 0, 0, $sDate[1],1, $sDate[0]));                    //³o­Ó¤ë1¸¹¬O²Ä¤@¶g&#13;
+    $this_month_1_day = date("d", mktime(0, 0, 0, $sDate[1],1, $sDate[0]));&#13;
+  }else { &#13;
+    $this_month_1_week = Date("W", mktime(0, 0, 0, $sDate[1], 1+(8-$wToday), $sDate[0]));        &#13;
+    $this_month_1_day = Date("d", mktime(0, 0, 0, $sDate[1], 1+(8-$wToday), $sDate[0]));        &#13;
+  }&#13;
+  &#13;
+  $this_month_end_week = Date("W", mktime(0, 0, 0, $sDate[1]+1, 1-1, $sDate[0]));    //¥»¤ë³Ì«á¤@¶g    &#13;
+  $nWeeks = $this_month_end_week - $this_month_1_week + 1;&#13;
+&#13;
+  if (trim($s_WW) == "") {&#13;
+    $this_month_today_week     = Date("W", mktime(0, 0, 0, date("m"), date("d"), date("Y")));    //¤µ¤Ñ¬O³o­Ó¤ë²Ä´X¶g    &#13;
+    $s_WW = $this_month_today_week - $this_month_1_week +1;&#13;
+  }&#13;
+&#13;
+  //¬d¸ß°_©l¤é´Á&#13;
+  $period_1_day = date("Y-m-d",mktime(0,0,0,$sDate[1],($this_month_1_day+(7*($s_WW-1))),$sDate[0]));&#13;
+  $period_7_day = date("Y-m-d",mktime(0,0,0,$sDate[1],($this_month_1_day+(7*$s_WW)-1),$sDate[0]));&#13;
+&#13;
+  $oSelect_MM = "&lt;select name='s_MM' onchange='srhForm.submit()';&gt;";&#13;
+  for ($i=6;$i&gt;=0;$i--) {&#13;
+    $c_MM = date("Y-m",mktime(0,0,0,date("m")-$i,1,date("Y")));&#13;
+    if ($c_MM == substr($s_MM,0,7))&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="11" tokens="22">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/guestbook_mt.php" line="255"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/dep_security.php" line="197"/>
+    <codefragment>  echo $oTable-&gt;line();&#13;
+  echo $oTable-&gt;end();&#13;
+&#13;
+  // msg -------------------------------------------------------------------------------&#13;
+  if ($_SESSION["alert_msg"] != "") {&#13;
+    js_alert($_SESSION["alert_msg"]);&#13;
+    $_SESSION["alert_msg"] = "";&#13;
+  }  &#13;
+?&gt;&#13;
+&lt;?&#13;
+    include ("../down.php");&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="11">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/view/browser.php" line="17"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/view/availablelinks.php" line="17"/>
+    <codefragment>&lt;?php echo $this-&gt;fetch("is_admin"); ?&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php echo $this-&gt;fetch("tab"); ?&gt;
+&lt;p&gt;&lt;select id="glist"&gt;&lt;/select&gt;&lt;/p&gt;
+</codefragment>
+  </duplication>
+  <duplication lines="19" tokens="86">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/enable_url.php" line="2"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cs.php" line="2"/>
+    <codefragment>ini_set('display_errors', on);&#13;
+error_reporting(E_ERROR);&#13;
+include("connect.php");&#13;
+include("class.php");&#13;
+include("func.php");&#13;
+include("../../../../conf/config_admin.php");&#13;
+session_start();&#13;
+&#13;
+function show_color($db_connc) {&#13;
+    $sql="select id,color_code,group_id,color_name from webs_color order by group_id asc";&#13;
+    $result = $db_connc-&gt;sql_query($sql);&#13;
+    if (($num_rows = $db_connc-&gt;num_rows()) &gt; 0) {&#13;
+        $show_color="&lt;table width=100%&gt;&lt;tr&gt;&lt;td width='75'&gt;底色表示: &lt;/td&gt;";&#13;
+        for($i=0;$i&lt;$num_rows;$i++) {&#13;
+            $row2=$db_connc-&gt;sql_row();&#13;
+            $h=$i+1;&#13;
+            if ($row2-&gt;color_name=="") $color_name="&lt;a href='#' onclick=new_win('ip_color_set.php?id=$row2-&gt;id&amp;gid=$row2-&gt;group_id','',300,95);&gt;群組 $h&lt;/a&gt;";&#13;
+            else $color_name="&lt;a href='#' onclick=new_win('ip_color_set.php?id=$row2-&gt;id&amp;gid=$row2-&gt;group_id','',300,95);&gt;$row2-&gt;color_name&lt;/a&gt;";&#13;
+            $show_color.="&lt;TD BGCOLOR='$row2-&gt;color_code' width='60'&gt;$color_name&lt;/TD&gt;";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="8" tokens="20">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/cust_contact.php" line="99"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cs.php" line="122"/>
+    <codefragment>  include ('subhead.php');&#13;
+  $oTab = new go_tab;&#13;
+  $oTab-&gt;start();&#13;
+&#13;
+if($VAR_COMMON['USER']['LVL'] == '2'){&#13;
+    $aSubhead[$subhead] = "default";&#13;
+//     $oTab-&gt;add('每日可用網扯',$aSubhead['enable_url'],"enable_url.php?subhead=enable_url&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('每日可用網扯',$aSubhead['enable_url2'], "../maintain/myway.php?mod=default&amp;ctrl=links&amp;act=index&amp;uid=".$_GET['uid']);&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="9" tokens="25">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/cust_contact_act.php" line="98"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cs_act.php" line="104"/>
+    <codefragment>echo "&lt;input type=hidden name=act value=".$_GET['act']."&gt;";&#13;
+&#13;
+&#13;
+$submit = "&lt;input type=submit name=go value='確定'&gt;";&#13;
+$submit.= "&amp;nbsp;&amp;nbsp;&lt;input type=button name=cancel value='取消' onclick=window.close();&gt;";&#13;
+echo $oList-&gt;command("",$submit);&#13;
+&#13;
+echo $oList-&gt;line();&#13;
+echo $oList-&gt;end();   &#13;
+</codefragment>
+  </duplication>
+  <duplication lines="13" tokens="31">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/cust_contact_act.php" line="94"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_act.php" line="77"/>
+    <codefragment>echo $oList-&gt;row_add("備註",$show);&#13;
+&#13;
+//記錄動作&#13;
+echo "&lt;input type=hidden name=id value=".$_GET['id']."&gt;";&#13;
+echo "&lt;input type=hidden name=act value=".$_GET['act']."&gt;";&#13;
+&#13;
+&#13;
+$submit = "&lt;input type=submit name=go value='確定'&gt;";&#13;
+$submit.= "&amp;nbsp;&amp;nbsp;&lt;input type=button name=cancel value='取消' onclick=window.close();&gt;";&#13;
+echo $oList-&gt;command("",$submit);&#13;
+&#13;
+echo $oList-&gt;line();&#13;
+echo $oList-&gt;end();   &#13;
+</codefragment>
+  </duplication>
+  <duplication lines="67" tokens="13">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cat.php" line="23"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/cust_contact_cat.php" line="18"/>
+    <codefragment>            $sql.= "values('$seq','".$_POST['cat_name']."')";&#13;
+            $db-&gt;usedb_level1($sql);&#13;
+            script_reload_set('opener');&#13;
+&#13;
+        break;&#13;
+}&#13;
+?&gt;&#13;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;&#13;
+&lt;html&gt;&#13;
+&lt;head&gt;&#13;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;&#13;
+&lt;title&gt;財產類別管理&lt;/title&gt;&#13;
+&lt;link href="mem_change_passed.css" rel="stylesheet" type="text/css"&gt;&#13;
+&lt;SCRIPT language=javascript&gt;&#13;
+function checkData (formObj) {&#13;
+        if (emptyField(formObj.cat_name)) {&#13;
+            formObj.cat_name.focus();&#13;
+            alert ("請輸入類別名稱!");&#13;
+            return false;&#13;
+            }&#13;
+        else {    &#13;
+                document.form1.submit();&#13;
+                return true;&#13;
+        }&#13;
+    }&#13;
+    &#13;
+    &#13;
+    function emptyField (fieldObj) {&#13;
+        if (fieldObj.value.length==0) {&#13;
+        return true;&#13;
+        }&#13;
+        var i;&#13;
+        for (i = 0; i &lt; fieldObj.value.length; i++ ) {&#13;
+            var ch = fieldObj.value.charAt(i);&#13;
+            if (ch !='' &amp;&amp; ch !='\t') {&#13;
+                return false;&#13;
+                }&#13;
+            }&#13;
+            return true;&#13;
+        }&#13;
+&#13;
+function sbar(st){st.style.backgroundColor='#CCCCFF';}&#13;
+&#13;
+function cbar(st){st.style.backgroundColor='';}&#13;
+&lt;/script&gt;&#13;
+&lt;/head&gt;&#13;
+&lt;body ONCONTEXTMENU="window.event.returnValue=false"  leftmargin="0" topmargin="0"&gt;&#13;
+&lt;form name="form1" method="post" action="&lt;?=$PHP_SELF?&gt;"&gt;&#13;
+  &lt;table width="500" border="1" cellpadding="0" cellspacing="0" bgcolor="#FC9011"&gt;&#13;
+   &lt;tr&gt; &#13;
+      &lt;td height="28" colspan="2"  bgcolor="#666666"&gt;&lt;div align="center"&gt;&lt;font color="#FFFFFF"&gt;類別管理&lt;/font&gt;&lt;/div&gt;&lt;/td&gt;&#13;
+    &lt;/tr&gt;&#13;
+    &lt;tr&gt; &#13;
+      &lt;td bgcolor="#CCCCCC"&gt;類別名稱:&lt;/td&gt;&#13;
+      &lt;td bgcolor="#FFFFFF"&gt; &#13;
+        &lt;input name="cat_name" type="text" class="zatext" maxlength="100"&gt;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;&#13;
+    &lt;tr align="center"&gt; &#13;
+      &lt;td height="28" colspan="2" bgcolor="#666666"&gt; &#13;
+        &lt;input name="Submit" type="button" class="zabutton" value="新增" onClick="checkData(document.form1);"&gt; &lt;input type=button name="cancel" value="關閉視窗" class="zatext" onClick="javascript:window.close();"&gt;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;&#13;
+  &lt;/table&gt;&#13;
+      &lt;input type="hidden" name="act" value="add"&gt;&#13;
+&lt;/form&gt;&#13;
+  &lt;?=$err_msg?&gt;&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="4">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/cust_contact_cat_inc.php" line="72"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cat_inc.php" line="181"/>
+    <codefragment>&lt;td align='center'&gt;&lt;font color='red'&gt;&lt;?=$id?&gt;&lt;/font&gt;&lt;/td&gt;&#13;
+&lt;td align='center'&gt;&lt;input type="text" name="cat_name" value="&lt;?=$cat_name?&gt;" size='11'&gt;&lt;/td&gt;&#13;
+&lt;td align='center'&gt;&lt;input type="submit" name="submit" value="送出"&gt;&lt;/td&gt;&#13;
+&lt;/tr&gt;&#13;
+&lt;input type="hidden" name="act" value="update"&gt;&#13;
+&lt;input type="hidden" name="id" value="&lt;?=$id?&gt;"&gt;&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="36" tokens="96">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/classbasic.php" line="25"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/func.php" line="186"/>
+    <codefragment>    var $autoid;
+    var $winrule;
+    
+    var $own;
+
+    function change_db($sqlhost,$sqlusr,$sqlpwd,$sqldb){
+
+        $this-&gt;sqlhost=$sqlhost;
+
+        $this-&gt;sqlusr=$sqlusr;
+
+        $this-&gt;sqlpwd=$sqlpwd;
+
+        $this-&gt;sqldb=$sqldb;
+        
+        $this-&gt;link =mysql_connect($this-&gt;sqlhost,$this-&gt;sqlusr,$this-&gt;sqlpwd);
+        
+        mysql_select_db($this-&gt;sqldb,$this-&gt;link);
+    }
+    
+
+    function usedb_level1($sql){
+        $this-&gt;rows = mysql_query($sql,$this-&gt;link);
+//        $this-&gt;rows = mysql_query($sql);
+        return $this-&gt;rows;
+    }
+    
+    function usedb_level2($page){
+
+        if( $page=='' )  $page=1;
+
+        $this-&gt;num = mysql_num_rows($this-&gt;rows);
+
+        $this-&gt;pages = intval(($this-&gt;num-1)/$this-&gt;show_n)+1;
+
+
+</codefragment>
+  </duplication>
+  <duplication lines="23" tokens="52">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/kolib.php" line="2"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/func.php" line="399"/>
+    <codefragment>class extlib extends Cdb{
+
+    function get_zonetime($webtimezone=-12){//====®É¶¡
+
+        $today_gmt = date("Y-m-d H:i:s",time()+3600*$webtimezone);
+        return $today_gmt;
+    }
+    
+    function autoid(){//================°ß¤@id
+          return md5( uniqid( microtime(),1 ) ).getmypid();
+    }
+
+//======================================½ß²v´«ºâ¤¤¤å
+    function cshowratio($concede,$ratio){
+    $concede_1=$concede-1;
+    Global $lang;
+    
+    //echo "&lt;font color=red&gt;$concede &amp;  $ratio&lt;/font&gt;";
+        switch($ratio){
+            case "0":
+                if($concede==0){$retemp = $lang['equal'];}else{$retemp = $concede.$lang['balls'];}
+                return $retemp;
+                break;
+</codefragment>
+  </duplication>
+  <duplication lines="82" tokens="398">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/kolib.php" line="62"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/func.php" line="459"/>
+    <codefragment>                break;
+            }
+
+    }
+
+    function changepostget($po,$ge,$def=''){
+        if( !empty($po) ) return $po;
+        else if( !empty($ge) ) return $ge;
+        else return $def;
+    }
+    
+
+    function c_strong_type($wagers_type,$strong,$type,$team_h,$team_c,$concede,$radio){//=============Âà´«Åã¥Ü
+            Global $lang;
+        switch($wagers_type){
+            case "0"://=================Åý²y
+                if($strong=="Y" and $type=="H"){echo "$team_h &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_c&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_h&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="Y" and $type=="C"){echo "$team_c &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_h&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_c&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="N" and $type=="H"){echo "$team_c &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio(0-$concede,0-$radio)."&lt;/FONT&gt; $team_h&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_h&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="N" and $type=="C"){echo "$team_h &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio(0-$concede,0-$radio)."&lt;/FONT&gt; $team_c&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_c&lt;/B&gt;&lt;/font&gt;";}
+
+            break;
+            case "1"://==========================¹LÃö¿WÄ¹
+                echo "$team_h&lt;font color=#CC0000&gt;VS.&lt;/font&gt;$team_c&lt;br&gt;&lt;font color=#CC0000&gt;&lt;B&gt;";
+                if($type=="H"){echo $team_h;}elseif($type=="C"){echo $team_c;}else{echo $lang['draw'];}
+                echo "&lt;/B&gt;&lt;/font&gt;";
+            break;
+            case "2"://==========================¤j¤p½L
+                echo "$team_h&lt;font color=#CC0000&gt;VS.&lt;/font&gt;$team_c&lt;br&gt;&lt;font color=#CC0000&gt;&lt;B&gt;";
+                if($type=="H"){echo $lang['over_f'];}else{echo $lang['under_f'];}
+                echo $this-&gt;showratio($concede,$radio);
+                echo "&lt;/B&gt;&lt;/font&gt;";
+
+            break;
+            case "3"://=================¨«¦aÅý²y
+                if($strong=="Y" and $type=="H"){echo "$team_h &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_c&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_h&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="Y" and $type=="C"){echo "$team_c &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_h&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_c&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="N" and $type=="H"){echo "$team_c &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio(0-$concede,0-$radio)."&lt;/FONT&gt; $team_h&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_h&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="N" and $type=="C"){echo "$team_h &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio(0-$concede,0-$radio)."&lt;/FONT&gt; $team_c&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_c&lt;/B&gt;&lt;/font&gt;";}
+            break;
+
+            case "4"://========================ªiÁx
+                switch($concede){
+                    case "OVH":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;$team_h $lang[ov_5]&lt;/font&gt;";
+
+                    break;
+                    case "OVC":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;$team_c $lang[ov_5]&lt;/font&gt;";
+
+                    break;
+                    default:
+                        $showrtype=eregi_replace('C','',eregi_replace('H','',$concede));
+                        if($type=="H") echo "$team_h &amp;nbsp;&lt;font color=#CC0000&gt;(".$showrtype.")&lt;/font&gt;&amp;nbsp;$team_c&lt;br&gt;";
+                        if($type=="C") echo "$team_c &amp;nbsp;&lt;font color=#CC0000&gt;(".$showrtype.")&lt;/font&gt;&amp;nbsp;$team_h&lt;br&gt;";
+                        return $showrtype;
+                    break;
+                } 
+            break;
+            case "5"://==========================³æÂù
+                //echo "&lt;BR&gt;$concede";
+                switch($concede){
+                    case "ODD":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;($lang[odd])&lt;/font&gt;";
+                    break;
+                    case "EVEN":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;($lang[even])&lt;/font&gt;";
+                    break;
+                    case "OVER":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;($lang[ov_7])&lt;/font&gt;";
+                    break;
+                    default:
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;(".$concede.")&lt;/font&gt;";
+                    break;
+                } 
+            break;
+            case "6"://==========================Á`¤J²y
+                switch($concede){
+                    case "ODD":
+                        echo "$team_h &lt;font color=#CC0000&gt; VS.&lt;/font&gt;&amp;nbsp;$team_c&lt;BR&gt;&lt;font color=#CC0000&gt;($lang[odd])&lt;/font&gt;";
+                    break;
+                    case "EVEN":
+</codefragment>
+  </duplication>
+  <duplication lines="7" tokens="34">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/kolib.php" line="164"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/func.php" line="561"/>
+    <codefragment>                echo $this-&gt;showratio($concede,$radio);
+                echo "&lt;/B&gt;&lt;/font&gt;";
+
+            break;
+            case "9"://=================Åý²y
+                if($strong=="Y" and $type=="H"){echo "$team_h &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_c&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_h&lt;/B&gt;&lt;/font&gt;";}
+                if($strong=="Y" and $type=="C"){echo "$team_c &lt;FONT COLOR=\"#CC0000\"&gt;".$this-&gt;showratio($concede,$radio)."&lt;/FONT&gt; $team_h&lt;font color=\"#CC0000\"&gt;&lt;BR&gt;&lt;B&gt;$team_c&lt;/B&gt;&lt;/font&gt;";}
+</codefragment>
+  </duplication>
+  <duplication lines="24" tokens="10">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/url_csv.php" line="47"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/bb_browser_url_csv.php" line="36"/>
+    <codefragment>            $data .= "&lt;cell&gt;&lt;![CDATA[&lt;a href='http://".$str['7']."' target='_blank'&gt;".$str['7']."&lt;/a&gt;]]&gt;&lt;/cell&gt;";&#13;
+        }&#13;
+        $data .= "&lt;/row&gt;";&#13;
+    }    &#13;
+}&#13;
+$data .= "&lt;/rows&gt;";&#13;
+echo $data;&#13;
+?&gt;</codefragment>
+  </duplication>
+  <duplication lines="19" tokens="86">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/enable_url.php" line="2"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/bb_browser_url.php" line="2"/>
+    <codefragment>ini_set('display_errors', on);&#13;
+error_reporting(E_ERROR);&#13;
+include("connect.php");&#13;
+include("class.php");&#13;
+include("func.php");&#13;
+include("../../../../conf/config_admin.php");&#13;
+session_start();&#13;
+&#13;
+function show_color($db_connc) {&#13;
+    $sql="select id,color_code,group_id,color_name from webs_color order by group_id asc";&#13;
+    $result = $db_connc-&gt;sql_query($sql);&#13;
+    if (($num_rows = $db_connc-&gt;num_rows()) &gt; 0) {&#13;
+        $show_color="&lt;table width=100%&gt;&lt;tr&gt;&lt;td width='75'&gt;底色表示: &lt;/td&gt;";&#13;
+        for($i=0;$i&lt;$num_rows;$i++) {&#13;
+            $row2=$db_connc-&gt;sql_row();&#13;
+            $h=$i+1;&#13;
+            if ($row2-&gt;color_name=="") $color_name="&lt;a href='#' onclick=new_win('ip_color_set.php?id=$row2-&gt;id&amp;gid=$row2-&gt;group_id','',300,95);&gt;群組 $h&lt;/a&gt;";&#13;
+            else $color_name="&lt;a href='#' onclick=new_win('ip_color_set.php?id=$row2-&gt;id&amp;gid=$row2-&gt;group_id','',300,95);&gt;$row2-&gt;color_name&lt;/a&gt;";&#13;
+            $show_color.="&lt;TD BGCOLOR='$row2-&gt;color_code' width='60'&gt;$color_name&lt;/TD&gt;";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="21" tokens="125">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/enable_url.php" line="129"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/maintain/bb_browser_url.php" line="129"/>
+    <codefragment>include ('subhead.php');&#13;
+$oTab = new go_tab;&#13;
+$oTab-&gt;start();&#13;
+&#13;
+if($VAR_COMMON['USER']['LVL'] == '2'){&#13;
+    $aSubhead[$subhead] = "default";&#13;
+    $oTab-&gt;add('每日可用網扯',$aSubhead['enable_url'],"enable_url.php?subhead=enable_url&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('每日可用網扯2',$aSubhead['enable_url2'], "../maintain/myway.php?mod=default&amp;ctrl=links&amp;act=index&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('BB瀏覽器',$aSubhead['bb_browser_url'],"bb_browser_url.php?subhead=bb_browser_url&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('BB瀏覽器2',$aSubhead['bb_browser_url2'],"../maintain/myway.php?mod=default&amp;ctrl=index&amp;act=index&amp;uid=".$_GET['uid']);&#13;
+}else{&#13;
+    $aSubhead[$subhead] = "default";&#13;
+    $oTab-&gt;add('系統客服網址管理',$aSubhead['ip_cs'],"ip_cs.php?subhead=ip_cs&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('每日可用網扯',$aSubhead['enable_url'],"enable_url.php?subhead=enable_url&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('每日可用網扯2',$aSubhead['enable_url2'], "../maintain/myway.php?mod=default&amp;ctrl=links&amp;act=index&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('BB瀏覽器',$aSubhead['bb_browser_url'],"bb_browser_url.php?subhead=bb_browser_url&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('BB瀏覽器2',$aSubhead['bb_browser_url2'],"../maintain/myway.php?mod=default&amp;ctrl=index&amp;act=index&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('客服通訊錄',$aSubhead['cust_contact'],"cust_contact.php?subhead=cust_contact&amp;uid=".$_GET['uid']);&#13;
+    $oTab-&gt;add('交辦事項',$aSubhead['center_man'],"work/center_man.php?subhead=center_man&amp;uid=".$_GET['uid']);&#13;
+}&#13;
+echo $oTab-&gt;show();&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="7" tokens="6">
+    <file path="/var/www/project001/source/ball_service/www/ip3/ip_edit.php" line="243"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/ip/ip_edit.php" line="125"/>
+    <codefragment>                &lt;option value="Block" &lt;? if ($data_AR[0]['AccessType']=="Block") echo "selected"; ?&gt;&gt;封鎖&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr bgcolor="#FFDFFF"&gt;
+        &lt;td colspan='2' align='center'&gt;&lt;input type="submit" name="submit" value="修改IP" class="za_button"&gt;
+&lt;input type="button" name="cancel" value="取消" onClick="location='ip_mang.php?uid=&lt;?=$uid?&gt;&amp;type=&lt;?=$_GET['station']?&gt;'" class="za_button"&gt;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="26">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_2.php" line="156"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash_chk.php" line="149"/>
+    <codefragment>$tpl-&gt;assign( "CASH800_enable", $tmp_enable );
+$tpl-&gt;assign( "CASH800_unenable", $tmp_unenable );
+$tpl-&gt;assign( "UID", $uid );
+$tpl-&gt;assign( 'TABLE_WIDTH', $table_width );
+$tpl-&gt;display( 'chore/chk_cash800.html' );
+exit();
+</codefragment>
+  </duplication>
+  <duplication lines="16" tokens="66">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_2.php" line="29"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800.php" line="20"/>
+    <codefragment>        $MIDSqlStr = array(
+            'MEM' =&gt; "ID IN ({$_POST['MemberIDStr']}) AND", 
+            'CASH' =&gt; "MID IN ({$_POST['MemberIDStr']}) AND" 
+        );
+    }
+    $dbCasino = $db[ $casino ][ 'Cs' ];
+    $ArrMid = array();
+    
+    //會員ID,帳號,CASH
+    $Sql = "SELECT `ID`, `USERNAME`, `CASH`, `ENABLE`, `HALLID` FROM `MEMBERS` WHERE {$MIDSqlStr['MEM']} `PAY_TYPE`='1' ORDER BY `HALLID` ASC, `ID` ASC";
+    $dbCasino-&gt;query( $Sql );
+    while ( $dbCasino-&gt;next_record() ) {
+        $cash800[ $dbCasino-&gt;f( 'ID' ) ] = array( 
+            'ID' =&gt; $dbCasino-&gt;f( 'ID' ), 
+            'CASH' =&gt; $dbCasino-&gt;f( 'CASH' ), 
+            'USERNAME' =&gt; $dbCasino-&gt;f( 'USERNAME' ), 
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="26">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_2.php" line="156"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800.php" line="128"/>
+    <codefragment>$tpl-&gt;assign( "CASH800_enable", $tmp_enable );
+$tpl-&gt;assign( "CASH800_unenable", $tmp_unenable );
+$tpl-&gt;assign( "UID", $uid );
+$tpl-&gt;assign( 'TABLE_WIDTH', $table_width );
+$tpl-&gt;display( 'chore/chk_cash800.html' );
+exit();
+</codefragment>
+  </duplication>
+  <duplication lines="117" tokens="218">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx2.php" line="2"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx.php" line="2"/>
+    <codefragment>define(PAGE,'true');
+define(PAGE_FROM,'CHORE_YN');
+
+include("../../../../conf/config_admin.php");
+//echo "&lt;pre&gt;";print_r($db);
+foreach ($global_vars['CASINO_ARR'] as $key=&gt;$value){
+    if($casino==$value)$casino_arr[$key]['selected']="selected";
+    $casino_arr[$key]['value']=$value;
+}
+//db連線
+$serviceDB=$db;
+unset($db);
+$db=$serviceDB[$_GET['casino']];
+
+if($_GET['wdate']=='') {
+    $wdate = TODAY_GMT;
+}else{
+    $wdate = $_GET['wdate'];
+}
+$seled[$_GET['langx']] = "selected";
+$seled[$_GET['prtype']] = "selected";
+empty($_GET['langx'])?$langx="big5":$langx=$_GET['langx'];
+empty($_GET['casino'])?$_GET['casino']="KK-TEST":$_GET['casino']=$_GET['casino'];
+empty($_GET['prtype'])?$prtype="":$prtype=$_GET['prtype'];
+
+if($_GET['action']=="Go"){
+    //抓取注單
+    //START======取得單子======//
+    $colow_str=" STAR,ID";
+    //查詢的條件
+    $qstr_where.=" 1=1 ";
+    $qstr_where .=" AND ORDERDATE='$wdate' ";
+
+    //投注種類
+    /*
+    if($prtype!="" ){
+    $double_rtype=Array("RH","R2H","RC","R2C","OUH","OU2H","OUC","OU2C");
+    $prtype_arr=explode ("_",$prtype);
+    $ptype=$prtype_arr[0];
+    if($ptype=="F" or $ptype=="PD" or $ptype=="T" or $ptype=="P"  or $ptype=="PC" or $ptype=="CS" or $ptype == 'DW'){
+    $qstr_where.="AND PTYPE='$ptype' ";
+    }else{
+    $qstr_where.="AND PTYPE='$ptype' ";
+    $qstr_rtype=" AND  (RTYPE='ETC' ";
+    for($i=1;$i&lt;count($prtype_arr);$i++){
+    if(in_array($prtype_arr[$i],$double_rtype)){
+    //找出rtype所在key加上一往下取值
+    $rtype2 = $double_rtype[array_search($prtype_arr[$i],$double_rtype)+1];
+    $qstr_rtype.=" OR RTYPE='".$prtype_arr[$i]."' OR RTYPE='".$rtype2."'";
+    }else{
+    $qstr_rtype.=" OR RTYPE='".$prtype_arr[$i]."'";
+    }
+    }
+    $qstr_rtype.=") ";
+    $qstr_where.=$qstr_rtype;
+    }
+    }*/
+
+    /*
+    if($prtype!="" ){
+    $prtype_arr=explode ("_",$prtype);
+    $ptype=$prtype_arr[0];
+    if($ptype=="F" or $ptype=="PD" or $ptype=="T" or $ptype=="P" or $ptype=="CS" or $ptype=="PC" or $ptype == 'DW'){
+    $qstr_where.="AND PTYPE='$ptype' ";
+    }else{
+    $double_rtype=Array("RH","R2H","RC","R2C","OUH","OU2H","OUC","OU2C");
+    $qstr_where.="AND PTYPE='$ptype' ";
+    $qstr_rtype=" AND RTYPE IN ('ETC'";
+    for($i=1;$i&lt;count($prtype_arr);$i++){
+    if(in_array($prtype_arr[$i],$double_rtype)){
+    //找出rtype所在key加上一往下取值
+    $rtype2 = $double_rtype[array_search($prtype_arr[$i],$double_rtype)+1];
+    $qstr_rtype.=",'".$prtype_arr[$i]."','".$rtype2."'";
+    }else{
+    $qstr_rtype.=",'".$prtype_arr[$i]."'";
+    }
+    }
+    $qstr_rtype.=") ";
+    $qstr_where.=$qstr_rtype;
+    }
+    }
+    */
+    $qstr_where.=$haker_str;
+
+    //頁數筆數
+    $_GET['PageListNums']?$page_list_NUM=$_GET['PageListNums']:$page_list_NUM=100;
+    if($page_list=="")$page_list=1;
+    $page_list_start=($page_list-1)*$page_list_NUM;
+
+    $qstr="SELECT ID FROM W_UC WHERE".$qstr_where." AND ID NOT IN (SELECT ID FROM WAGERS WHERE".$qstr_where." ) LIMIT ".$page_list_start.",".$page_list_NUM;
+    $db['Cs']-&gt;query($qstr);
+    $wagersData=$db['Cs']-&gt;get_total_data('ID');
+
+    $qstr="SELECT ID FROM WAGERS WHERE".$qstr_where." AND RESULT IN ('X','S')";
+    $db['Cs']-&gt;query($qstr);
+    while ($db['Cs']-&gt;next_record()) {
+        if(!is_array($wagersData[$db['Cs']-&gt;f('ID')])) {
+            $wagersData[$db['Cs']-&gt;f('ID')] = $db['Cs']-&gt;record;
+        }
+    }
+
+    $wagers_count=count($wagersData);
+    foreach ($wagersData as $wid=&gt;$wvalue){
+        $wid_arr[]=$wvalue['ID'];
+    }
+    //print_r($wid_arr);
+    $wagers_class=new wagers_class($db,$wid_arr,$langx);
+    $wagersData=$wagers_class-&gt;wagers_data;
+    $wagers_sub_data=$wagers_class-&gt;wagers_sub_data;
+
+    $wagersDataNums=count($wagersData);
+    //找總頁數
+    $qstr="SELECT COUNT(ID) AS C FROM W_UC WHERE".$qstr_where." AND ID NOT IN (SELECT ID FROM WAGERS WHERE".$qstr_where." ) LIMIT ".$page_list_start.",".$page_list_NUM;
+    $db['Cs']-&gt;query($qstr,1);
+    $wagers_count_total=$db['Cs']-&gt;f('C');
+
+    $qstr="SELECT COUNT(ID) AS C FROM WAGERS WHERE".$qstr_where." AND RESULT IN ('X','S')";
+</codefragment>
+  </duplication>
+  <duplication lines="104" tokens="374">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx2.php" line="152"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx.php" line="152"/>
+    <codefragment>    foreach ($wagersData as $i=&gt;$wvalue){
+        $Aid=$wvalue['AID'];
+        if($wagersData[$i][RESULT]=='C'){
+            $WIN_GOLD="&lt;s&gt;".$wagersData[$i]['WINGOLD_D']+$wagersData[$i]['REBA_GOLD_DM']."&lt;/s&gt;";
+            $GOLD="&lt;s&gt;".$wagersData[$i]['GOLD']."&lt;/s&gt;";
+            $total_gold+=$wagersData[$i]['GOLD'];
+        }elseif($wagersData[$i][RESULT]=='S'){
+            $WIN_GOLD="&lt;s&gt;".$wagersData[$i]['WINGOLD_D']+$wagersData[$i]['REBA_GOLD_DM']."&lt;/s&gt;";
+            $GOLD="&lt;s&gt;".$wagersData[$i]['GOLD']."&lt;/s&gt;";
+            $total_gold+=$wagersData[$i]['GOLD'];
+        }else{
+            $RESULT_A+=$wagersData[$i]['RESULT_A'];
+            $total_gold+=$wagersData[$i]['GOLD'];
+            $GOLD=$wagersData[$i]['GOLD'];
+            //現金如果沒有KEY結果,結果等於-gold
+            if($wagersData[$i][RESULT]=="X" and $wagersData[$i]['PAY_TYPE']=="1"){
+                $WIN_GOLD=-$GOLD;
+                $total_wing_gold-=$GOLD;
+                $REBA_GOLD_DA+=0;
+                $WINGOLD_M-=$GOLD;
+            }else{
+                $REBA_GOLD_DA+=$wagersData[$i]['REBA_GOLD_DA'];
+                $WINGOLD_M+=$wagersData[$i]['WINGOLD_D'];
+                $total_wing_gold+=$wagersData[$i]['WINGOLD_D']+$wagersData[$i]['REBA_GOLD_DM'];
+                $WIN_GOLD=$wagersData[$i]['WINGOLD_D']+$wagersData[$i]['REBA_GOLD_DM'];
+            }
+        }
+        //=====注單內容
+
+        if($wagersData[$i]['STAR']&gt;count($wagers_sub_data[$wagersData[$i]['ID']])){
+            if($corp_ck){
+                $total_gold-=$wagersData[$i]['GOLD'];
+            }else{
+                if($wagersData[$i][RESULT]!='C' &amp;&amp; $wagersData[$i][RESULT]!='S')$total_gold-=$wagersData[$i]['GOLD'];
+            }
+            $total_count--;
+            $total_wing_gold-=($wagersData[$i]['WINGOLD_M']+$wagersData[$i]['REBA_GOLD_DM']);
+            $RESULT_A-=$wagersData[$i]['RESULT_A'];
+            $REBA_GOLD_DA-=$wagersData[$i]['REBA_GOLD_DA'];
+            $WINGOLD_M-=$wagersData[$i]['WINGOLD_M'];
+            continue;
+        }
+
+        $tname="";
+        $ck=0;
+
+        foreach ($wagers_sub_data[$wagersData[$i][ID]] as $wsid=&gt;$wsvalue){
+            if($wsvalue[RESULT]=="C" || $wsvalue[RESULT]=="S"){
+                $ck++;
+            }
+            if( $wsvalue[GTYPE]=="SP"){
+                $league_name=$wsvalue[LEAGUES_NAME];
+            }else {
+                $league_name=$wsvalue[LEAGUES_SHORT_NAME];
+            }
+            //指數加賽事日期
+            if ($wsvalue[GTYPE]=="FU"){
+                $qstr_gdate_fu="SELECT ID,GDATE FROM GAMES WHERE ID ='".$wsvalue[GID]."' AND GTYPE = 'FU';";
+                $db['Gs']-&gt;query($qstr_gdate_fu);
+                $gdate_fu_tmp=$db['Gs']-&gt;get_total_data('ID');
+                $gdate_fu_str = $gdate_fu_tmp[$wsvalue[GID]][GDATE];
+                $gdate_fu = substr($gdate_fu_str,0,10);
+            }else{
+                $gdate_fu = "";
+            }
+            $tname.=wagers_class::get_wagers_content(
+            $league_name,
+            $wsvalue[TEAMH_NAME],
+            $wsvalue[TEAMC_NAME],
+            $wsvalue[PTYPE],
+            $wsvalue[RTYPE],
+            $wsvalue[STRONG],
+            $wsvalue[IORATIO],
+            $wsvalue[RATIO],
+            $wsvalue[CONCEDE],
+            $wsvalue[RESULT_UC],
+            $wsvalue[RESULT],
+            $wsvalue[GAME_KEYED],
+            $ws_id,
+            $MEM_DATA['CHA_WAGERS'],
+            $wagersData[$i][ADDDATE],
+            $wsvalue[GID],
+            $wsvalue[MIDFIELD],
+            $wsvalue[GTYPE],
+            $wsvalue[OTYPE],
+            $casino,
+            $score,
+            $gdate_fu)."&lt;br&gt;";
+        }
+        $m_name=$wagersData[$i]['USERNAME'];
+
+        $wagers_type=wagers_class::get_ptype_str($wagersData[$i]['GTYPE'],$wagersData[$i]['PTYPE'],$wagersData[$i]['RTYPE'],$wagersData[$i]['STAR']-$ck);
+        ($VAR_COMMON['USER']['LEVEL']=='CORP')?
+        ($wagers_type.="&lt;br&gt;&lt;font color=#999999&gt;".$wagersData[$i]['ORDERIP']."&lt;/font&gt;"):
+        ('');
+        $addate=substr($wagersData[$i]['ADDDATE'],5,5)."&lt;BR&gt;".substr($wagersData[$i]['ADDDATE'],11);
+        if($wagersData[$i][RESULT]=="C"){
+            $WIN_GOLD="&lt;font color='red'&gt;".$LVar["S_DEL_FUN_ED"]."&lt;/font&gt;";
+        }elseif($wagersData[$i][RESULT]=="S"){
+            $WIN_GOLD="&lt;font color='red'&gt;".$LVar["S_WAITING"]."&lt;/font&gt;";
+        }
+
+        //新增會員要變顏色 下
+        $set_gmt=gmdate("Y-m-d H:i:s",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon]-1,$today[mday],$today[year]));
+</codefragment>
+  </duplication>
+  <duplication lines="152" tokens="229">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx2.php" line="300"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/resultx.php" line="300"/>
+    <codefragment>        }else{
+            $USERNAME=$VAR_COMMON['USER']['USERNAME'];
+            $serviceDB['Cm']-&gt;query("UPDATE ACTION_RECORD SET USERNAME='".$USERNAME."',ADDDATE='".NOW_GMT."',PS='(".$casino.")檢查(".$wdate.")總共 $wagers_count_total 張完畢' WHERE ID='".$RTID."';");
+        }
+    }
+}
+//讀取記錄
+$serviceDB['Cm']-&gt;query("SELECT ID,USERNAME,ADDDATE,ACT_TYPE,PS FROM ACTION_RECORD WHERE ACT_TYPE='resultx' AND ADDDATE &gt;= '".$wdate."' ORDER BY ADDDATE DESC LIMIT 6");
+$LAST_DATA = $serviceDB['Cm']-&gt;get_total_data();
+//ECHO "&lt;PRE&gt;";PRINT_R($LAST_DATA);
+$RESULTX_RECORD="";
+foreach($LAST_DATA as $val) {
+    $RESULTX_RECORD .= "&lt;tr class='m_rig'&gt;";
+    $RESULTX_RECORD .= "&lt;td class='m_title_re'&gt;".$val['ADDDATE']."&lt;/td&gt;&lt;td align='center'&gt;".$val['USERNAME']."&lt;/td&gt;&lt;td align='center'&gt;".$val['PS']."&lt;/td&gt;";
+    $RESULTX_RECORD .= "&lt;/tr&gt;";
+}
+
+?&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;link rel="stylesheet" href="/tpl/default/style/admin/control_main.css" type="text/css"&gt;
+&lt;link rel="stylesheet" href="/tpl/default/style/admin/calendar.css" type="text/css"&gt;
+&lt;script language="JavaScript" src="/js/simplecalendar.js"&gt;&lt;/script&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+&lt;TITLE&gt;未結算注單&lt;/TITLE&gt;
+&lt;style type="text/css"&gt;
+&lt;!--
+.m_bc {background-color: #E0E6C4; padding-left: 7px }
+.m_title_re {background-color: #A7B272; text-align: center; color: #000000}
+.m_title_right {background-color: #A7B272; text-align: right; color: #000000}
+.style1 {background-color: #A7B272; text-align: right; color: #000000; }
+.layer0 {position:relative;z-index:0;}
+.style2 {color: #FF0000}
+--&gt;
+&lt;/style&gt;
+&lt;script&gt;
+&lt;!--
+var langx='UTF-8';
+--&gt;
+&lt;/SCRIPT&gt;
+
+&lt;/HEAD&gt;
+&lt;body&gt;
+&lt;br&gt;
+&lt;table border="0" cellspacing="1" cellpadding="0" class="m_tab_ed" width="600"&gt;
+&lt;FORM id="myFORM" ACTION="resultx2.php" METHOD=GET name="FrmData"&gt;
+  
+    &lt;tr bgcolor="#996600"&gt;
+      &lt;td colspan="6" class="style1"&gt;&lt;div align="center"&gt;未結算注單&lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="m_bc"&gt;
+      &lt;td class="m_title_re"&gt;站別&lt;/td&gt;
+      &lt;td&gt;&lt;select id="casino" name="casino" class="za_select" &gt;
+&lt;?
+foreach ($casino_arr as $_key=&gt;$_value) {
+    echo "&lt;option value='".$casino_arr[$_key]['value']."' ".$casino_arr[$_key]['selected']."&gt;".$casino_arr[$_key]['value']."&lt;/option&gt;";
+}
+?&gt;          
+        &lt;/select&gt;
+      &lt;/td&gt;
+      &lt;td class="m_title_re"&gt;頁筆數&lt;/td&gt;
+      &lt;td&gt;
+        &lt;input size="3" type="Text" name="PageListNums" value=&lt;?=$page_list_NUM?&gt;&gt;筆
+      &lt;/td&gt;
+      &lt;td class="m_title_re"&gt;分頁&lt;/td&gt;
+      &lt;td&gt;
+        &lt;select id="page_list" name="page_list" onChange="self.myFORM.submit()" class="za_select"&gt;
+          &lt;?=$page_list?&gt;
+          &lt;/select&gt;/&lt;?=$total_pages?&gt;頁
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="m_bc"&gt;
+      &lt;td width="100" class="m_title_re"&gt;日期&lt;/td&gt;
+      &lt;td &gt;
+            &lt;input type=TEXT name="wdate" value="&lt;?=$wdate?&gt;" size=10 maxlength=11 class="za_text"&gt;
+            &lt;a href="javascript: void(0);" onMouseOver="if (timeoutId) clearTimeout(timeoutId);window.status='Show Calendar';return true;" onMouseOut="if (timeoutDelay) calendarTimeout();window.status='';" onClick="g_Calendar.show(event,'myFORM.wdate',true,'yyyy-mm-dd'); return false;"&gt;
+            &lt;img src="/tpl/default/images/admin/calendar.gif" name="imgCalendar" width="34" height="21" border="0"&gt;&lt;/a&gt;
+              &lt;input type="hidden" name="uid" value="&lt;?=$uid?&gt;"&gt;
+              &lt;input type="hidden" name="action" value="Go"&gt;
+            &lt;input type="submit" value="送出"&gt;
+      &lt;/td&gt;
+      
+      &lt;td class="m_title_re"&gt;&lt;!--&lt;?=$LVar['S_WAGER_TYPE']?&gt;: --&gt;&lt;/td&gt;
+      &lt;td &gt; &lt;!--
+        &lt;select name="prtype" class="za_select"&gt;
+          &lt;option value="" &lt;?=$seled['']?&gt;&gt;&lt;?=$LVar['S_R_ALL']?&gt;&lt;/option&gt;
+          &lt;option value="S_RH_RC" &lt;?=$seled['S_RH_RC']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['S_R']?&gt;&lt;/option&gt;
+          &lt;option value="RB_RH_RC" &lt;?=$seled['RB_RH_RC']?&gt;&gt;&lt;?=$LVar['RB']?&gt;&lt;?=$LVar['S_R']?&gt;&lt;/option&gt;
+          &lt;option value="RB_OUH_OUC" &lt;?=$seled['RB_OUH_OUC']?&gt;&gt;&lt;?=$LVar['RB']?&gt;&lt;?=$LVar['OU']?&gt;&lt;/option&gt;
+          &lt;option value="RB_EVEN_ODD" &lt;?=$seled['RB_EVEN_ODD']?&gt;&gt;&lt;?=$LVar['RB']?&gt;&lt;?=$LVar['S_EO']?&gt;&lt;/option&gt;
+          &lt;option value="P" &lt;?=$seled['P']?&gt;&gt;&lt;?=$LVar['S_R_P']?&gt;&lt;/option&gt;
+          &lt;option value="PC" &lt;?=$seled['PC']?&gt;&gt;&lt;?=$LVar['S_PC']?&gt;&lt;/option&gt;          
+          &lt;option value="S_OUH_OUC" &lt;?=$seled['S_OUH_OUC']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['OU']?&gt;&lt;/option&gt;
+          &lt;option value="PD" &lt;?=$seled['PD']?&gt;&gt;&lt;?=$LVar['PD']?&gt;&lt;/option&gt;
+          &lt;option value="T" &lt;?=$seled['T']?&gt;&gt;&lt;?=$LVar['T']?&gt;&lt;/option&gt;
+          &lt;option value="S_MH_MN_MC" &lt;?=$seled['S_MH_MN_MC']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['S_M']?&gt;&lt;/option&gt;
+          &lt;option value="F" &lt;?=$seled['F']?&gt;&gt;&lt;?=$LVar['F']?&gt;&lt;/option&gt;
+          &lt;option value="DW" &lt;?=$seled['S_DW']?&gt;&gt;&lt;?=$LVar['S_DW']?&gt;&lt;/option&gt;
+          &lt;option value="S_ODD_EVEN" &lt;?=$seled['S_ODD_EVEN']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['S_EO']?&gt;&lt;/option&gt;
+          &lt;option value="V_RH_RC" &lt;?=$seled['V_RH_RC']?&gt;&gt;&lt;?=$LVar['V']?&gt;&lt;?=$LVar['S_R']?&gt;&lt;/option&gt;
+          &lt;option value="V_OUH_OUC" &lt;?=$seled['V_OUH_OUC']?&gt;&gt;&lt;?=$LVar['V']?&gt;&lt;?=$LVar['OU']?&gt;&lt;/option&gt;
+          &lt;option value="V_EVEN_ODD" &lt;?=$seled['V_EVEN_ODD']?&gt;&gt;&lt;?=$LVar['V']?&gt;&lt;?=$LVar['S_EO']?&gt;&lt;/option&gt;
+          &lt;option value="V_MH_MN_MC" &lt;?=$seled['V_MH_MN_MC']?&gt;&gt;&lt;?=$LVar['V']?&gt;&lt;?=$LVar['S_M']?&gt;&lt;/option&gt;
+          &lt;option value="U_RH_RC" &lt;?=$seled['U_RH_RC']?&gt;&gt;&lt;?=$LVar['U']?&gt;&lt;?=$LVar['S_R']?&gt;&lt;/option&gt;
+          &lt;option value="U_OUH_OUC" &lt;?=$seled['U_OUH_OUC']?&gt;&gt;&lt;?=$LVar['U']?&gt;&lt;?=$LVar['OU']?&gt;&lt;/option&gt;
+          &lt;option value="U_ODD_EVEN" &lt;?=$seled['U_ODD_EVEN']?&gt;&gt;&lt;?=$LVar['U']?&gt;&lt;?=$LVar['S_EO']?&gt;&lt;/option&gt;
+          &lt;option value="S_R0H_R0C" &lt;?=$seled['S_R0H_R0C']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['S_R0']?&gt;&lt;/option&gt;
+          &lt;option value="S_R12H_R12C" &lt;?=$seled['S_R12H_R12C']?&gt;&gt;&lt;?=$LVar['S']?&gt;&lt;?=$LVar['S_1L2W']?&gt;&lt;/option&gt;
+          &lt;option value="CS" &lt;?=$seled['CS']?&gt;&gt;&lt;?=$LVar['CS']?&gt;&lt;/option&gt;                      
+        &lt;/select&gt;
+        //--&gt;
+      &lt;/td&gt;
+      &lt;td class="m_title_re"&gt;語系&lt;/td&gt;
+      &lt;td&gt;
+          &lt;select id="langx" name="langx" class="za_select" &gt;
+            &lt;option value="big5" &lt;?=$seled['big5']?&gt;&gt;繁體&lt;/option&gt;
+            &lt;option value="gb" &lt;?=$seled['gb']?&gt;&gt;簡體&lt;/option&gt;
+            &lt;!--&lt;option value="en-us" &lt;?=$seled['en-us']?&gt;&gt;英文&lt;/option&gt;--&gt;
+        &lt;/select&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;    
+&lt;/form&gt;
+  &lt;/table&gt;  
+&lt;table border="0" cellspacing="1" cellpadding="0" class="m_tab_ed" width="900"&gt;
+    &lt;tr class="m_bc"&gt;
+      &lt;td class="m_title_re" width="50"&gt;時間&lt;/td&gt;
+      &lt;td class="m_title_re" width="120"&gt;單號&lt;/td&gt;
+      &lt;td class="m_title_re" width="90"&gt;退水&lt;/td&gt;
+      &lt;td class="m_title_re" width="150"&gt;球賽種類&lt;/td&gt;
+      &lt;td class="m_title_re" width="300"&gt;內容&lt;/td&gt;
+      &lt;td class="m_title_re" width="120"&gt;金額&lt;/td&gt;
+      &lt;td class="m_title_re" width="120"&gt;結果&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;?=$WAGERS_CONTENT?&gt; 
+    &lt;tr&gt; 
+         &lt;td class="m_title_right"&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&lt;?=$total_count?&gt;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&lt;?=$total_gold?&gt;&lt;/td&gt;
+      &lt;td class="m_title_right"&gt;&lt;?=sprintf("%01.1f",round($total_wing_gold,1))?&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+
+&lt;table border="0" cellspacing="1" cellpadding="0" class="m_tab_ed" width="450"&gt;
+    &lt;tr class="m_bc"&gt;
+      &lt;td class="m_title_re" width="100"&gt;時間&lt;/td&gt;
+      &lt;td class="m_title_re" width="50"&gt;執行者&lt;/td&gt;
+      &lt;td class="m_title_re" width="300"&gt;內容&lt;/td&gt;
+      &lt;?=$RESULTX_RECORD?&gt;
+</codefragment>
+  </duplication>
+  <duplication lines="155" tokens="49">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_authno.php" line="16"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_samewager.php" line="16"/>
+    <codefragment>$LAST_DATA = $db['Cm']-&gt;get_total_data();&#13;
+?&gt;&#13;
+&lt;HTML&gt;&#13;
+&lt;HEAD&gt;&#13;
+&lt;TITLE&gt;登入紀錄&lt;/TITLE&gt;&#13;
+&lt;link rel="stylesheet" href="/tpl/default/style/admin/control_main.css" type="text/css"&gt;&#13;
+&lt;link rel="stylesheet" href="/tpl/default/style/admin/calendar.css" type="text/css"&gt;&#13;
+&#13;
+&lt;script language="JavaScript" src="/js/simplecalendar.js"&gt;&lt;/script&gt;&#13;
+&#13;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;&#13;
+&lt;style type="text/css"&gt;&#13;
+&lt;!--&#13;
+.m_bc {background-color: #E0E6C4; padding-left: 7px }&#13;
+.m_title_re {background-color: #A7B272; text-align: center; color: #000000}&#13;
+.style1 {background-color: #A7B272; text-align: right; color: #000000; }&#13;
+.layer0 {position:relative;z-index:0;}&#13;
+.style2 {color: #FF0000}&#13;
+--&gt;&#13;
+&lt;/style&gt;&#13;
+&lt;SCRIPT&gt;&#13;
+&lt;!--&#13;
+var langx='UTF-8';&#13;
+var wcount = 0;&#13;
+var acount = 0;&#13;
+var act = 0;&#13;
+var wdate = '';&#13;
+var pages = 0;&#13;
+var nums = 0;&#13;
+var onums = 0;&#13;
+var allnums = 0;&#13;
+var next_nums = 0;&#13;
+var wdata = new Array();&#13;
+var casino = '';&#13;
+var flag2 = '';&#13;
+var tmpstr = '';&#13;
+&#13;
+var tabhead = '&lt;tr class="style1"&gt;&lt;td width="50" align="center"&gt;單號&lt;/td&gt;&lt;td width="80" align="center"&gt;會員&lt;/td&gt;&lt;td width="400"&gt;注單內容&lt;/td&gt;&lt;td width="100"&gt;下注時間&lt;/td&gt;&lt;td width="150" align=center&gt;IP&lt;/td&gt;&lt;/tr&gt;';&#13;
+&#13;
+function addshow() {&#13;
+   var obj_win = document.getElementById('data_list');&#13;
+&#13;
+   obj_win.style.top = (document.body.clientHeight/2)-100;&#13;
+   obj_win.style.left = (document.body.clientWidth/2)-100;&#13;
+   &#13;
+   if(obj_win.style.display=='none') &#13;
+     obj_win.style.display = 'block';&#13;
+   &#13;
+   switch (act) {&#13;
+      case 0:&#13;
+         return;&#13;
+         break;&#13;
+      case 1:&#13;
+         chg_table = '&lt;FORM id="myFORM1" ACTION="chk_authno_act.php" METHOD=GET name="FrmData" target="tmp"&gt;&lt;table width="200" height="100" border="0" cellspacing="1" cellpadding="0" class="m_title_re"&gt;';&#13;
+         chg_table+= '&lt;tr class="m_bc"&gt;&lt;td &gt;總共有 '+acount+' 張&lt;BR&gt;';&#13;
+         chg_table+= '&lt;input type=hidden name=wdate value="'+wdate+'"&gt;&lt;input type=hidden name=casino value="'+casino+'"&gt;&lt;input type=hidden name=uid value="&lt;?=$uid?&gt;"&gt;&lt;input type=hidden name=action value="2"&gt;&lt;input type=submit value="開始檢查"&gt;&lt;input type=button value="關閉" onclick="document.getElementById(\'data_list\').style.display =\'block\';data_table.innerHTML = \'\';"&gt;&lt;/td&gt;&lt;/tr&gt;';&#13;
+         chg_table+= '&lt;/table&gt;';&#13;
+         chg_table+= '&lt;/form&gt;';&#13;
+         data_table.innerHTML = chg_table;&#13;
+         break;&#13;
+      case 2:&#13;
+         chg_table = '&lt;FORM id="myFORM1" ACTION="chk_authno_act.php" METHOD=GET name="FrmData" target="tmp"&gt;&lt;table width="200" height="100" border="0" cellspacing="1" cellpadding="0" class="m_title_re"&gt;';&#13;
+         chg_table+= '&lt;tr class="m_bc"&gt;&lt;td &gt;已完成 '+(nums*onums)+' / '+allnums+' 張&lt;BR&gt;';&#13;
+         chg_table+= '&lt;input type=hidden name=wdate value="'+wdate+'"&gt;&lt;input type=hidden name=casino value="'+casino+'"&gt;&lt;input type=hidden name=uid value="&lt;?=$uid?&gt;"&gt;&lt;input type=hidden name=action value="2"&gt;&lt;input type=hidden name=nums value='+next_nums+'&gt;&lt;input type=submit value="5" name="startbtn" onclick="this.value=5;window.clearTimeout(flag2);"&gt;&lt;input type=button value="關閉" onclick="window.clearTimeout(flag2);document.getElementById(\'data_list\').style.display =\'block\';data_table.innerHTML = \'\';"&gt;&lt;/td&gt;&lt;/tr&gt;';&#13;
+         chg_table+= '&lt;/table&gt;';&#13;
+         chg_table+= '&lt;/form&gt;';&#13;
+         flag2 = window.setTimeout("reloadstart()",1000);&#13;
+         data_table.innerHTML = chg_table;&#13;
+         break;&#13;
+      case 3:&#13;
+         if(allnums&gt;0) {&#13;
+            chg_table = '&lt;table width="200" height="100" border="0" cellspacing="1" cellpadding="0" class="m_title_re"&gt;';&#13;
+            chg_table+= '&lt;tr class="m_bc"&gt;&lt;td &gt;已全部完成!! 共 '+allnums+' 張&lt;BR&gt;';&#13;
+            chg_table+= '&lt;input type=button value="關閉" onclick="document.getElementById(\'data_list\').style.display =\'block\';data_table.innerHTML = \'\';"&gt;&lt;/td&gt;&lt;/tr&gt;';&#13;
+            chg_table+= '&lt;/table&gt;';&#13;
+         }else{&#13;
+            chg_table = '&lt;table width="200" height="100" border="0" cellspacing="1" cellpadding="0" class="m_title_re"&gt;';&#13;
+            chg_table+= '&lt;tr class="m_bc"&gt;&lt;td &gt;沒有單耶@@?&lt;BR&gt;';&#13;
+            chg_table+= '&lt;input type=button value="關閉" onclick="document.getElementById(\'data_list\').style.display =\'block\';data_table.innerHTML = \'\';"&gt;&lt;/td&gt;&lt;/tr&gt;';&#13;
+            chg_table+= '&lt;/table&gt;';&#13;
+         }&#13;
+         data_table.innerHTML = chg_table;&#13;
+         break;&#13;
+   }&#13;
+   TT = document.getElementById('wtable');&#13;
+   for(i=0;i&lt;wcount;i++) {&#13;
+      tmpstr += '&lt;tr class="m_bc"&gt;&lt;td&gt;'+wdata[i][0]+'&lt;/td&gt;&lt;td&gt;'+wdata[i][1]+'&lt;/td&gt;&lt;td&gt;'+wdata[i][2]+'&lt;/td&gt;&lt;td&gt;'+wdata[i][3]+'&lt;/td&gt;&lt;td&gt;'+wdata[i][4]+'&lt;/td&gt;&lt;/tr&gt;';&#13;
+   }&#13;
+   TT.innerHTML = ' &lt;table border="0" cellspacing="1" cellpadding="0" class="m_title_re" &gt;'+tabhead+tmpstr+'&lt;/table&gt;';&#13;
+&#13;
+}&#13;
+&#13;
+function reloadstart() {&#13;
+   try {&#13;
+      if(myFORM1.startbtn.value &gt;0) {&#13;
+         myFORM1.startbtn.value=myFORM1.startbtn.value-1;&#13;
+         flag2 = window.setTimeout("reloadstart(myFORM1.startbtn)",1000);&#13;
+      }&#13;
+      else if (myFORM1.startbtn.value&lt;=0) myFORM1.submit();&#13;
+   }catch(e) {&#13;
+      return;&#13;
+   }&#13;
+}&#13;
+--&gt;&#13;
+&lt;/SCRIPT&gt;&#13;
+&#13;
+&lt;/HEAD&gt;&#13;
+&lt;body&gt;&#13;
+&lt;br&gt;&#13;
+&lt;table border="0" cellspacing="1" cellpadding="0" class="m_tab_ed" width="500"&gt;&#13;
+&lt;FORM id="myFORM" ACTION="chk_authno_act.php" METHOD=GET name="FrmData" target="tmp"&gt;&#13;
+  &#13;
+    &lt;tr bgcolor="#996600"&gt;&#13;
+      &lt;td colspan="2" class="style1"&gt;&lt;div align="center"&gt;驗證碼&lt;/div&gt;&lt;/td&gt;&#13;
+    &lt;/tr&gt;&#13;
+    &lt;tr class="m_bc"&gt;&#13;
+      &lt;td class="m_title_re"&gt;站別&lt;/td&gt;&#13;
+      &lt;td&gt;&lt;select id="casino" name="casino" class="za_select" &gt;&#13;
+&lt;?&#13;
+         foreach ($casino_arr as $_key=&gt;$_value) {            &#13;
+            echo "&lt;option value='".$casino_arr[$_key]['value']."' ".$casino_arr[$_key]['selected']."&gt;".$casino_arr[$_key]['value']."&lt;/option&gt;";&#13;
+         }&#13;
+?&gt;          &#13;
+        &lt;/select&gt;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;&#13;
+    &lt;tr class="m_bc"&gt;&#13;
+      &lt;td width="100" class="m_title_re"&gt;日期&lt;/td&gt;&#13;
+      &lt;td&gt;&#13;
+            &lt;input type=TEXT name="wdate" value="&lt;?=$wdate?&gt;" size=10 maxlength=11 class="za_text"&gt;&amp;nbsp;&lt;a href="javascript: void(0);" onMouseOver="if (timeoutId) clearTimeout(timeoutId);window.status='Show Calendar';return true;" onMouseOut="if (timeoutDelay) calendarTimeout();window.status='';" onClick="g_Calendar.show(event,'myFORM.wdate',true,'yyyy-mm-dd'); return false;"&gt;&amp;nbsp;&amp;nbsp;&lt;img src="/tpl/default/images/admin/calendar.gif" name="imgCalendar" width="34" height="21" border="0"&gt;&lt;/a&gt;&amp;nbsp;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;    &#13;
+    &lt;tr class="m_bc"&gt;&#13;
+      &lt;td width="100" class="m_title_re"&gt;最後6筆動作記錄&lt;/td&gt;&#13;
+      &lt;td&gt;&#13;
+            &lt;table width="100%" class="m_tab_ed" border="0" cellspacing="1" cellpadding="0"&gt;&#13;
+              &lt;?&#13;
+                  foreach($LAST_DATA as $val) {&#13;
+                      echo "&lt;tr&gt;";&#13;
+                      echo "&lt;td width='20%' class='m_title_re'&gt;".$val['ADDDATE']."&lt;/td&gt;&lt;td width='20%'&gt;".$val['USERNAME']."&lt;/td&gt;&lt;td width='60%'&gt;".$val['PS']."&lt;/td&gt;";&#13;
+                      echo "&lt;/tr&gt;";&#13;
+                  }&#13;
+              ?&gt;&#13;
+              &lt;/table&gt;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;              &#13;
+    &lt;tr class="m_bc"&gt;&#13;
+      &lt;td colspan="2" align="center"&gt;                  &#13;
+               &lt;input type="submit" value="確認"&gt;&#13;
+      &lt;/td&gt;&#13;
+    &lt;/tr&gt;          &#13;
+      &lt;input type="hidden" name="query_type" value="chk_authno"&gt;&#13;
+      &lt;input type="hidden" name="uid" value="&lt;?=$uid?&gt;"&gt;&#13;
+      &lt;input type="hidden" name="action" value="1"&gt;&#13;
+      &#13;
+</codefragment>
+  </duplication>
+  <duplication lines="42" tokens="235">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_04.php" line="411"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_04.php" line="486"/>
+    <codefragment>function getCashNegative($HideAccData, $hallinfo, $casino){&#13;
+    // 大球站&#13;
+    if (in_array($casino, array(2, 3, 5, 88))) {&#13;
+        define('IS_BALL_SITE', true);&#13;
+        $casino_domain = array(2=&gt;20000008, 3=&gt;20000009, 5=&gt;20000010, 88=&gt;20000007);&#13;
+    } else {&#13;
+        define('IS_BALL_SITE', false);&#13;
+    }&#13;
+    &#13;
+    $param['sub_ret'] = true;&#13;
+    $CashData = DurianConn::Connect($casino)-&gt;getCashNegativeBalance($param);        //現金&#13;
+    $CashFakeData = DurianConn::Connect($casino)-&gt;getCashFakeNegativeBalance($param);//假現金&#13;
+    //檢查並合併&#13;
+    if($CashData['result'] == 'ok' &amp;&amp; $CashFakeData['result'] == 'ok'){&#13;
+        $DurianData['ret'] = array_merge((array)$CashData['ret'],(array)$CashFakeData['ret']);&#13;
+        $DurianData['sub_ret']['user'] = array_merge((array)$CashData['sub_ret']['user'],(array)$CashFakeData['sub_ret']['user']);&#13;
+        $DurianData['result'] = 'ok';&#13;
+        $DurianData['pagination']['total'] = $CashData['pagination']['total'] + $CashFakeData['pagination']['total'];&#13;
+&#13;
+        //重組會員資訊&#13;
+        foreach ((array)$DurianData['sub_ret']['user'] as $value){&#13;
+            $UserInfo[$value['id']]['id'] = $value['id'];&#13;
+            $UserInfo[$value['id']]['alias'] = $value['alias'];&#13;
+            $UserInfo[$value['id']]['domain'] = $value['domain'];&#13;
+            $UserInfo[$value['id']]['enable'] = $value['enable'];&#13;
+            $UserInfo[$value['id']]['username'] = $value['username'];&#13;
+            &#13;
+            &#13;
+        }&#13;
+        &#13;
+        $ResultData['en'] = array();&#13;
+        $ResultData['un'] = array();&#13;
+        foreach ((array)$DurianData['ret'] as $value){&#13;
+            if ((IS_BALL_SITE &amp;&amp; $UserInfo[$value['user_id']]['domain']==$casino_domain[$casino]) || IS_BALL_SITE==false) {&#13;
+                $domain = $UserInfo[$value['user_id']]['domain'];&#13;
+                $cash = number_format($value['balance'],4,".","");&#13;
+                &#13;
+                if ($UserInfo[$value['user_id']]['enable'] == true) {&#13;
+                    $ResultData['en'][$value['user_id']]['ENABLE'] = true;&#13;
+                    $ResultData['en'][$value['user_id']]['ENABLE_TYPE'] = "&lt;font color=blue&gt;(啟用)&lt;/font&gt;";&#13;
+                    $ResultData['en'][$value['user_id']]['ALIAS'] = $hallinfo[$domain]['alias'];&#13;
+                    $ResultData['en'][$value['user_id']]['HALL'] = $hallinfo[$domain]['username'];&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="9" tokens="38">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_04.php" line="376"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_04.php" line="542"/>
+    <codefragment>        $check_hide_acc = array_intersect_assoc($HideAccData,$ResultData['en']);&#13;
+        foreach ($check_hide_acc as $value){&#13;
+            //檢查金額是否有異動&#13;
+            if($check_hide_acc[$value['CID']]['CASH'] == $ResultData['en'][$value['CID']]['CASH']){&#13;
+                unset($ResultData['en'][ $value['CID'] ]);&#13;
+            }else{&#13;
+                //判斷是否在隱藏名單內&#13;
+                if($check_hide_acc[$value['CID']]['CID'] == $ResultData['en'][$value['CID']]['ID']){&#13;
+                    $ResultData['en'][$value['CID']]['CHECKBOX'] = "checked";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="20">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_samewager_act.php" line="52"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_samewager_act.php" line="131"/>
+    <codefragment>        $qstrGame = "SELECT ID,GAME_OVER FROM GAMES WHERE GDATE&gt;='".$_GET['wdate']." 00:00:00'";&#13;
+        $db['Gs']-&gt;query($qstrGame);&#13;
+        while($db['Gs']-&gt;next_record()){&#13;
+            $gameIdTmp = '';&#13;
+            $gameOverTypeTmp = '';&#13;
+            $gameIdTmp = $db['Gs']-&gt;f('ID');&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="12">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_authno_act.php" line="140"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_samewager_act.php" line="251"/>
+    <codefragment>      break; &#13;
+}&#13;
+if($ALLROW==0) {&#13;
+      echo "parent.act=3;\n";&#13;
+      echo "parent.allnums=0;\n";&#13;
+      echo "parent.next_nums=0;\n";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="32">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/user_mang/mem_search2.php" line="222"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/user_mang/mem_search2.php" line="287"/>
+    <codefragment>    $sa_data['PASSWD']=auth::de_pwd($sa_data['PASSWD']);
+    $sa_data['USERNAME']="&lt;a href=\"mem_search.php?site=".$site."&amp;skind=SA&amp;sname=".$sa_data['USERNAME']."&amp;uid=$uid\"&gt;".$sa_data['USERNAME']."&lt;/a&gt;";
+    //股東資料
+    $str="SELECT SCID,ID,USERNAME,PASSWD FROM CORP WHERE ID='".$sa_data['CID']."' AND TYPE='0'";
+    $db[$site]['Cs']-&gt;query($str);
+    $co_data=$db[$site]['Cs']-&gt;get_total_data();$co_data=$co_data[0];
+</codefragment>
+  </duplication>
+  <duplication lines="15" tokens="106">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/control_user/class.control_user.php" line="30"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/control_user/class.control_user.php" line="133"/>
+    <codefragment>    function query_ioratio($tpl){&#13;
+        global  $today,$LOG_STR,$global_vars;&#13;
+        //////////////////////////&#13;
+        //初始參數&#13;
+        /////////////////////////&#13;
+        if($this-&gt;_in_data['gdate']=="")$this-&gt;_in_data['gdate']=gmdate("Y-m-d",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon],$today[mday],$today[year]));&#13;
+        if($this-&gt;_in_data['gtype']=="")$this-&gt;_in_data['gtype']="FT";&#13;
+        if($this-&gt;_in_data['time_start']=="")$this-&gt;_in_data['time_start']="00:00";&#13;
+        if($this-&gt;_in_data['time_end']=="")$this-&gt;_in_data['time_end']="23:59";&#13;
+        //賽事日期&#13;
+        for ($i=-10;$i&lt;=7;$i++){&#13;
+            $gdate_gmt=gmdate("Y-m-d",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon],$today[mday]+$i,$today[year]));&#13;
+            $gdate_arr[$i]['value']=$gdate_gmt;&#13;
+            if($gdate_gmt==$this-&gt;_in_data['gdate']){&#13;
+                $gdate_arr[$i]['selected']="selected";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="10" tokens="25">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/chore/dc_action_record.php" line="92"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/del_fast_report.php" line="96"/>
+    <codefragment>                ."&lt;/td&gt;";&#13;
+                $outStr .= "&lt;td&gt;".$tmpValue['CONTENT']."&lt;/td&gt;";&#13;
+                $outStr .= "&lt;td align='center'&gt;".$tmpValue['HANDLER']."&lt;/td&gt;";&#13;
+                $outStr .= "&lt;td align='center'&gt;".$tmpValue['NEW_DATE']."&lt;/td&gt;";&#13;
+                $outStr .= "&lt;/tr&gt;";&#13;
+                $numRecord++;&#13;
+            }&#13;
+        }&#13;
+        unset($arrName);&#13;
+        unset($arrLogData);&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="45" tokens="168">
+    <file path="/var/www/project001/source/ball_service/www/dbcheck/gamelife.php" line="9"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/donic_test.php" line="22"/>
+    <codefragment>foreach (($gdata) as $key=&gt;$value){&#13;
+    //echo strtotime($value['GDATE'])."||";&#13;
+    //echo strtotime($value['STOP_TIME'])."&lt;br&gt;";&#13;
+    $star_time=strtotime($value['GDATE']);&#13;
+    $end_time=strtotime($value['STOP_TIME']);&#13;
+    for ($i=$star_time;$i&lt;$end_time;$i=$i+600){&#13;
+        $run_data[$i]++;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+$db['BB']['Gs']-&gt;close();&#13;
+header("Content-type: image/png");&#13;
+$im = @imagecreate(900,700)&#13;
+or die("Cannot Initialize new GD image stream");&#13;
+$background_color = imagecolorallocate($im, 255, 255, 255);&#13;
+$xy_color = imagecolorallocate($im, 233, 14, 91);&#13;
+$y_color = imagecolorallocate($im, 191, 185, 181);&#13;
+$text_color = imagecolorallocate($im, 191, 185, 181);&#13;
+//畫x&#13;
+ImageLine($im, 20, 620, 820,620, $xy_color);&#13;
+//畫y&#13;
+ImageLine($im, 20, 20, 20,620, $xy_color);&#13;
+//畫x格線&#13;
+for ($y=20;$y&lt;620;$y=$y+12){&#13;
+    ImageLine($im, 20, $y, 820,$y, $y_color);&#13;
+    if(($y-20) % 120==0)imagestring($im, 10,0,$y,(620-$y)/12,$text_color);&#13;
+}&#13;
+//畫曲線&#13;
+$x=20;&#13;
+$star_time=$today_gmt." 00:00:00";&#13;
+$star_time=strtotime($star_time);&#13;
+for ($i=0;$i&lt;144;$i++){&#13;
+    ImageLine($im, $i*800/144,620-($run_data[$star_time+$i*600])*12, ($i+1)*800/144,620-($run_data[$star_time+($i+1)*600])*12, $xy_color);&#13;
+    if($i % 12==0)imagestring($im, 10,($i)*800/144,620,date("H",$star_time+$i*600),$text_color);    &#13;
+}&#13;
+imagepng($im);&#13;
+imagedestroy($im);&#13;
+?&gt;</codefragment>
+  </duplication>
+  <duplication lines="16" tokens="44">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/cash_backup_advance.php" line="24"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/cash_backup.php" line="105"/>
+    <codefragment>$db['Cm']-&gt;query("SELECT ID,USERNAME,ADDDATE,ACT_TYPE,PS FROM ACTION_RECORD WHERE ACT_TYPE='cash_backup' ORDER BY ADDDATE DESC LIMIT 10");
+$LAST_DATA = $db['Cm']-&gt;get_total_data();
+
+//顯示操作紀錄
+$strLastData = '';
+foreach($LAST_DATA as $val) {
+    $strLastData .= "&lt;tr&gt;";
+    $strLastData .= "&lt;td width='20%' class='m_title_re'&gt;".$val['ADDDATE']."&lt;/td&gt;&lt;td width='20%'&gt;".$val['USERNAME']."&lt;/td&gt;&lt;td width='60%'&gt;".$val['PS']."&lt;/td&gt;";
+    $strLastData .= "&lt;/tr&gt;";
+}
+$tpl-&gt;assign("LAST_DATA",$strLastData);
+
+$tpl-&gt;display('developer/cash_backup.html');
+?&gt;</codefragment>
+  </duplication>
+  <duplication lines="8" tokens="24">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/checkSP.php" line="2"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/chk_war.php" line="11"/>
+    <codefragment>define(PAGE,true);
+define(AUTH_USE,false);
+include("../../../../conf/config_admin.php");
+$effect = new effect();
+
+//站別選單
+$aCASINO = array('BB1', 'KK', 'CC', 'BB2', 'bet88');
+foreach ($aCASINO as $key=&gt;$value) {
+</codefragment>
+  </duplication>
+  <duplication lines="28" tokens="33">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/checkSP.php" line="84"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/chk_war.php" line="73"/>
+    <codefragment>&lt;select name="casino"&gt;&lt;?=$optCASINO?&gt;&lt;/select&gt;
+&lt;select name="level"&gt;&lt;?=$optLevel?&gt;&lt;/select&gt;
+&lt;input type="submit" name="submit" value="查詢"&gt;
+&amp;nbsp;[&lt;?=$countAll?&gt;]
+&lt;hr&gt;
+&lt;table width="100%" border="0" cellpadding="0" cellspacing="0"&gt;
+&lt;?php
+if ($trStr!=Null) {
+?&gt;
+&lt;table width=640 border=1&gt;
+&lt;tr&gt;&lt;td width="25%"&gt;&lt;?=$aLevel[$_POST['level']]?&gt;&lt;/td&gt;&lt;td&gt;下層&lt;/td&gt;&lt;/tr&gt;
+&lt;?=$trStr?&gt;
+&lt;/table&gt;
+&lt;?php
+} else {
+    echo "查無資料!!";
+}
+$effect-&gt;keep();
+echo "&lt;br&gt;".$effect-&gt;show();
+?&gt;
+&lt;/form&gt;
+&lt;form name="autoSubmit" action="fixLostUser.php" method="GET"&gt;
+&lt;input type="hidden" name="type" value="sport"&gt;
+&lt;input type="hidden" name="id" value="&lt;?=$sportLost[0]?&gt;"&gt;
+&lt;input type="hidden" name="h" value="&lt;?=$_POST['h']?&gt;"&gt;
+&lt;input type="hidden" name="l" value="&lt;?=$_POST['l']?&gt;"&gt;
+&lt;input type="hidden" name="enable" value="&lt;?=$_POST['enable']?&gt;"&gt;
+&lt;input type="hidden" name="sub" value="&lt;?=$_POST['sub']?&gt;"&gt;
+</codefragment>
+  </duplication>
+  <duplication lines="10" tokens="14">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/checkSP.php" line="102"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/developer/chkLostUser.php" line="125"/>
+    <codefragment>echo "&lt;br&gt;".$effect-&gt;show();
+?&gt;
+&lt;/form&gt;
+&lt;form name="autoSubmit" action="fixLostUser.php" method="GET"&gt;
+&lt;input type="hidden" name="type" value="sport"&gt;
+&lt;input type="hidden" name="id" value="&lt;?=$sportLost[0]?&gt;"&gt;
+&lt;input type="hidden" name="h" value="&lt;?=$_POST['h']?&gt;"&gt;
+&lt;input type="hidden" name="l" value="&lt;?=$_POST['l']?&gt;"&gt;
+&lt;input type="hidden" name="enable" value="&lt;?=$_POST['enable']?&gt;"&gt;
+&lt;input type="hidden" name="sub" value="&lt;?=$_POST['sub']?&gt;"&gt;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="41">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/control_user/class.control_user.php" line="31"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/record/class.record.php" line="76"/>
+    <codefragment>        global  $today,$LOG_STR,$global_vars;&#13;
+        //////////////////////////&#13;
+        //初始參數&#13;
+        /////////////////////////&#13;
+        if($this-&gt;_in_data['gdate']=="")$this-&gt;_in_data['gdate']=gmdate("Y-m-d",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon],$today[mday],$today[year]));&#13;
+        if($this-&gt;_in_data['gtype']=="")$this-&gt;_in_data['gtype']="FT";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="21">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/control_user/class.control_user.php" line="67"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/record/class.record.php" line="115"/>
+    <codefragment>                    AND NEW_DATE&lt;='".$this-&gt;_in_data['gdate']." ".$this-&gt;_in_data['time_end']."'";&#13;
+            $prtype=$this-&gt;_in_data['prtype'];&#13;
+            if($prtype!="" ){&#13;
+                $prtype_arr=explode ("_",$prtype);&#13;
+                $ptype=$prtype_arr[0];&#13;
+                if($ptype=="F" or $ptype=="PD" or $ptype=="T" or $ptype=="P"  or $ptype=="PC" or $ptype=="CS"){&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="14" tokens="108">
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/record/class.record.php" line="75"/>
+    <file path="/var/www/project001/source/ball_service/www/app/control/admin/record/class.record.php" line="376"/>
+    <codefragment>    function query_ioratio($tpl,$php_self,$page_num,$page_key){&#13;
+        global  $today,$LOG_STR,$global_vars;&#13;
+        //////////////////////////&#13;
+        //初始參數&#13;
+        /////////////////////////&#13;
+        if($this-&gt;_in_data['gdate']=="")$this-&gt;_in_data['gdate']=gmdate("Y-m-d",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon],$today[mday],$today[year]));&#13;
+        if($this-&gt;_in_data['gtype']=="")$this-&gt;_in_data['gtype']="FT";&#13;
+        if($this-&gt;_in_data['time_start']=="")$this-&gt;_in_data['time_start']="00:00";&#13;
+        if($this-&gt;_in_data['time_end']=="")$this-&gt;_in_data['time_end']="23:59";&#13;
+&#13;
+        //賽事日期&#13;
+        for ($i=-10;$i&lt;=7;$i++){&#13;
+            $gdate_gmt=gmdate("Y-m-d",mktime($today[hours]+WEB_TIME_ZONE,$today[minutes],$today[seconds],$today[mon],$today[mday]+$i,$today[year]));&#13;
+            $gdate_arr[$i]['value']=$gdate_gmt;&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="9" tokens="58">
+    <file path="/var/www/project001/source/ball_service/www/conf/sweep_conf.php" line="49"/>
+    <file path="/var/www/project001/source/ball_service/www/conf/sweep_conf.php" line="263"/>
+    <codefragment>        $sweep_conf['database'][1]['USERNAME'] = $trunk_db_username;&#13;
+        $sweep_conf['database'][1]['PASSWD'] = $trunk_db_passwd;&#13;
+        $sweep_conf['database'][1]['table'][0]['name'] = "LOGIN_MEMBERS";&#13;
+        $sweep_conf['database'][1]['table'][0]['key_word'] = "NEW_DATE";&#13;
+        $sweep_conf['database'][1]['table'][0]['dday'][0]['value'] = 3;&#13;
+        $sweep_conf['database'][1]['table'][1]['name'] = "LOGIN_AGENT";&#13;
+        $sweep_conf['database'][1]['table'][1]['key_word'] = "NEW_DATE";&#13;
+        $sweep_conf['database'][1]['table'][1]['dday'][0]['value'] = 3;&#13;
+        $sweep_conf['database'][1]['table'][2]['name'] = "LOGIN_SUPER_AGENT";&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="12" tokens="41">
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member_bet88.php" line="9"/>
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member.php" line="36"/>
+    <codefragment>if($_POST['active']==1){&#13;
+    echo "&lt;pre&gt;&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"&gt;";&#13;
+    ////////////////////&#13;
+    //處理變數&#13;
+    ///////////////////&#13;
+    $del_c=$_POST['username_c'];&#13;
+    $del_sa=$_POST['username_sa'];&#13;
+    $del_a=$_POST['username_a'];&#13;
+    $username=$_POST['username'];&#13;
+    $old_account_table=Array("SC"=&gt;"super_corprator","C"=&gt;"corprator","SA"=&gt;"super_agents","A"=&gt;"agents");&#13;
+    $old_conf_table=Array("SC"=&gt;"sc_conf","C"=&gt;"co_conf","SA"=&gt;"su_conf","A"=&gt;"ag_conf");&#13;
+    $insert_account_table=Array("SC"=&gt;"SUPER_CORP","C"=&gt;"CORP","SA"=&gt;"SUPER_AGENT","A"=&gt;"AGENT","M"=&gt;"MEMBERS");&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="8" tokens="22">
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member_bet88.php" line="347"/>
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member.php" line="491"/>
+    <codefragment>    $qstr_txt="";&#13;
+    foreach ($qstr_arr as $key=&gt;$value){&#13;
+        $qstr_txt.=$value.";\n";&#13;
+    }&#13;
+    //    echo $qstr_txt;&#13;
+    echo "&lt;br&gt;";&#13;
+    echo "共".count($qstr_arr)."資料新增";&#13;
+    $now_gmt=str_replace(":","_",$now_gmt);&#13;
+</codefragment>
+  </duplication>
+  <duplication lines="51" tokens="50">
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member_bet88.php" line="700"/>
+    <file path="/var/www/project001/source/ball_service/www/donic_temp/move_member.php" line="1068"/>
+    <codefragment>        if($i&lt;$size-1)$qstr_shark.=";\n";&#13;
+    }&#13;
+    return $qstr_shark;&#13;
+}&#13;
+&#13;
+////////////////////////////////////////////&#13;
+//比對資料是否正確&#13;
+//m_data=&gt;母table&#13;
+//s_data=&gt;子table&#13;
+////////////////////////////////////////////&#13;
+function check_data($m_data,$s_data,$type,$key){&#13;
+    $lv_str['sc']="大股東";&#13;
+    $lv_str['c']="股東";&#13;
+    $lv_str['sa']="總代理";&#13;
+    $lv_str['a']="代理商";&#13;
+    if($m_data['maxcredit']!=$s_data['maxcredit']){&#13;
+        echo "&lt;pre&gt;";&#13;
+        print_r($m_data);&#13;
+        print_r($s_data);&#13;
+        echo $lv_str[$type]."信用額度異常 id=$key&lt;br&gt;";&#13;
+        exit;&#13;
+    }&#13;
+    if($m_data['winloss']!=$s_data['winloss']){&#13;
+        echo "&lt;pre&gt;";&#13;
+        print_r($m_data);&#13;
+        print_r($s_data);&#13;
+        echo $lv_str[$type]."佔成數異常 id=$key&lt;br&gt;";&#13;
+        exit;&#13;
+    }&#13;
+    if($type=="SA"){&#13;
+        if($m_data['winloss_upper']!=$s_data['winloss_upper'] or $m_data['winloss_lower']!=$s_data['winloss_lower']){&#13;
+            echo "&lt;pre&gt;";&#13;
+            print_r($m_data);&#13;
+            print_r($s_data);&#13;
+            echo $lv_str[$type]."佔成數上下限異常 id=$key&lt;br&gt;";&#13;
+            exit;&#13;
+        }&#13;
+    }&#13;
+&#13;
+    if($type=="A"){&#13;
+        if($m_data['winloss_s']!=$s_data['winloss_s'] or $m_data['winloss_a']!=$s_data['winloss_a']){&#13;
+            echo "&lt;pre&gt;";&#13;
+            print_r($m_data);&#13;
+            print_r($s_data);&#13;
+            echo $lv_str[$type]."佔成數異常 id=$key&lt;br&gt;";&#13;
+            exit;&#13;
+        }&#13;
+    }&#13;
+}&#13;
+&#13;
+function do_conf($conf_data,$lever_type){&#13;
+</codefragment>
+  </duplication>
+</pmd-cpd>

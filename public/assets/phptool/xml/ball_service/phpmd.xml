@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pmd version="1.5.0" timestamp="2013-11-01T17:31:05+08:00">
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_audit.php">
+    <violation beginline="81" author="ken">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="93" author="ichiro">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="135" author="ichiro">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/chore/chk_cash800_04.php">
+    <violation beginline="324" author="totoko">
+       The function getCashErrorBalance() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="411" author="ting">
+       The function getCashNegative() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="411" author="ting">
+       Avoid unused parameters such as '$HideAccData'.
+    </violation>
+    <violation beginline="486" author="totoko">
+       The function getCashNegativeBalance() has a Cyclomatic Complexity of 16. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="486" author="totoko">
+       The function getCashNegativeBalance() has an NPath complexity of 388. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="582" author="totoko">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="616" author="totoko">
+       Avoid unused parameters such as '$HideAccData'.
+    </violation>
+    <violation beginline="616" author="totoko">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="655" author="totoko">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="664" author="totoko">
+       Avoid variables with short names like $ps. Configured minimum length is 3.
+    </violation>
+    <violation beginline="700" author="totoko">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="710" author="totoko">
+       Avoid variables with short names like $ps. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/chore/class.chkWagers.php">
+    <violation beginline="8" author="lee">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="19" author="lee">
+       Avoid unused parameters such as '$gid'.
+    </violation>
+    <violation beginline="27" author="lee">
+       The method processSql() has an NPath complexity of 3125. The configured NPath complexity threshold is 200.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/chore/pre_compute.php">
+    <violation beginline="152" author="lee">
+       The class cump has 22 fields. Consider to redesign cump to keep the number of fields under 15.
+    </violation>
+    <violation beginline="152" author="lee">
+       The class cump has an overall complexity of 278 which is very high. The configured complexity threshold is 50.
+    </violation>
+    <violation beginline="181" author="lee">
+       The method __construct() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="181" author="lee">
+       The method __construct() has an NPath complexity of 512. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="181" author="lee">
+       The method __construct() has 123 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="181" author="lee">
+       The method __construct has 10 parameters. Consider to reduce parameter number under 10.
+    </violation>
+    <violation beginline="181" author="lee">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="305" author="lee">
+       The method cump() has a Cyclomatic Complexity of 43. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="305" author="lee">
+       The method cump() has an NPath complexity of 3571283520. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="305" author="lee">
+       The method cump() has 232 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="305" author="lee">
+       Classes should not have a constructor method with the same name as the class
+    </violation>
+    <violation beginline="422" author="lee">
+       Avoid unused local variables such as '$qstr_arr'.
+    </violation>
+    <violation beginline="458" author="lee">
+       Avoid unused local variables such as '$old_result'.
+    </violation>
+    <violation beginline="505" author="lee">
+       Avoid unused local variables such as '$cow_key'.
+    </violation>
+    <violation beginline="541" author="lee">
+       The method determine_result() has a Cyclomatic Complexity of 126. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="541" author="lee">
+       The method determine_result() has an NPath complexity of 177685090422840000. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="541" author="lee">
+       The method determine_result() has 313 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="541" author="lee">
+       Avoid unused parameters such as '$wsid'.
+    </violation>
+    <violation beginline="542" author="lee">
+       Avoid unused local variables such as '$db'.
+    </violation>
+    <violation beginline="542" author="lee">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="857" author="lee">
+       The method determine_wingold() has a Cyclomatic Complexity of 29. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="857" author="lee">
+       The method determine_wingold() has an NPath complexity of 316. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="857" author="lee">
+       Avoid unused parameters such as '$na'.
+    </violation>
+    <violation beginline="857" author="lee">
+       Avoid variables with short names like $na. Configured minimum length is 3.
+    </violation>
+    <violation beginline="923" author="lee">
+       The method check_result() has a Cyclomatic Complexity of 66. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="923" author="lee">
+       The method check_result() has an NPath complexity of 1818260435158272. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="923" author="lee">
+       The method check_result() has 164 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="923" author="lee">
+       Avoid unused parameters such as '$kind'.
+    </violation>
+    <violation beginline="923" author="lee">
+       Avoid unused parameters such as '$keyed'.
+    </violation>
+    <violation beginline="923" author="lee">
+       Avoid unused parameters such as '$debug'.
+    </violation>
+    <violation beginline="923" author="lee">
+       Avoid unused parameters such as '$gid'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/control_user/class.control_user.php">
+    <violation beginline="5" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="30" author="ena">
+       The method query_ioratio() has a Cyclomatic Complexity of 19. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="30" author="ena">
+       The method query_ioratio() has an NPath complexity of 2736. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="31" author="ena">
+       Avoid unused local variables such as '$global_vars'.
+    </violation>
+    <violation beginline="53" author="ena">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="103" author="ena">
+       Avoid unused local variables such as '$today'.
+    </violation>
+    <violation beginline="133" author="ena">
+       The method query_score() has a Cyclomatic Complexity of 11. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="133" author="ena">
+       The method query_score() has an NPath complexity of 432. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="134" author="ena">
+       Avoid unused local variables such as '$LOG_STR'.
+    </violation>
+    <violation beginline="134" author="ena">
+       Avoid unused local variables such as '$global_vars'.
+    </violation>
+    <violation beginline="156" author="ena">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="156" author="ena">
+       Avoid unused local variables such as '$ptype'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/developer/chk_800_amount.php">
+    <violation beginline="30" author="totoko">
+       The function amount_chk() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="30" author="totoko">
+       The function amount_chk() has an NPath complexity of 653401. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="30" author="totoko">
+       The function amount_chk() has 264 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="30" author="totoko">
+       Avoid unused parameters such as '$_POPT'.
+    </violation>
+    <violation beginline="30" author="totoko">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="122" author="totoko">
+       Avoid unused local variables such as '$val'.
+    </violation>
+    <violation beginline="126" author="totoko">
+       Avoid unused local variables such as '$val1'.
+    </violation>
+    <violation beginline="130" author="totoko">
+       Avoid unused local variables such as '$val2'.
+    </violation>
+    <violation beginline="134" author="totoko">
+       Avoid unused local variables such as '$val3'.
+    </violation>
+    <violation beginline="280" author="lee">
+       Avoid unused local variables such as '$bankid'.
+    </violation>
+    <violation beginline="281" author="lee">
+       Avoid unused local variables such as '$paysystemid'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/developer/class.db_info.php">
+    <violation beginline="4" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="33" author="ena">
+       Avoid variables with short names like $a. Configured minimum length is 3.
+    </violation>
+    <violation beginline="45" author="ena">
+       Avoid variables with short names like $i. Configured minimum length is 3.
+    </violation>
+    <violation beginline="51" author="ena">
+       Avoid variables with short names like $a. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/developer/class.db_sweep.php">
+    <violation beginline="12" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="48" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="53" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="62" author="ena">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/developer/fixLostUser.php">
+    <violation beginline="43" author="lee">
+       The function SportsUserAdd() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="43" author="lee">
+       The function SportsUserAdd() has an NPath complexity of 4920. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="43" author="lee">
+       The function SportsUserAdd() has 187 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="44" author="lee">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="179" author="lee">
+       Avoid unused local variables such as '$fieldTC'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/bb_browser_url.php">
+    <violation beginline="12" author="lee">
+       Avoid unused local variables such as '$result'.
+    </violation>
+    <violation beginline="17" author="lee">
+       Avoid variables with short names like $h. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/class.php">
+    <violation beginline="2" author="hikaru">
+       The class dat has 13 methods. Consider refactoring dat to keep number of methods under 10.
+    </violation>
+    <violation beginline="69" author="hikaru">
+       Avoid unused parameters such as '$sql'.
+    </violation>
+    <violation beginline="105" author="hikaru">
+       The method showpage10() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="105" author="hikaru">
+       The method showpage10() has an NPath complexity of 576. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="114" author="hikaru">
+       Avoid variables with short names like $it. Configured minimum length is 3.
+    </violation>
+    <violation beginline="153" author="hikaru">
+       Avoid unused local variables such as '$pp'.
+    </violation>
+    <violation beginline="153" author="hikaru">
+       Avoid variables with short names like $pp. Configured minimum length is 3.
+    </violation>
+    <violation beginline="154" author="hikaru">
+       Avoid unused local variables such as '$np'.
+    </violation>
+    <violation beginline="154" author="hikaru">
+       Avoid variables with short names like $np. Configured minimum length is 3.
+    </violation>
+    <violation beginline="156" author="hikaru">
+       Avoid unused local variables such as '$di'.
+    </violation>
+    <violation beginline="156" author="hikaru">
+       Avoid variables with short names like $di. Configured minimum length is 3.
+    </violation>
+    <violation beginline="157" author="hikaru">
+       Avoid unused local variables such as '$tt'.
+    </violation>
+    <violation beginline="157" author="hikaru">
+       Avoid variables with short names like $tt. Configured minimum length is 3.
+    </violation>
+    <violation beginline="158" author="hikaru">
+       Avoid unused local variables such as '$p'.
+    </violation>
+    <violation beginline="158" author="hikaru">
+       Avoid variables with short names like $p. Configured minimum length is 3.
+    </violation>
+    <violation beginline="166" author="hikaru">
+       Avoid variables with short names like $t. Configured minimum length is 3.
+    </violation>
+    <violation beginline="178" author="hikaru">
+       Avoid unused local variables such as '$todaytime'.
+    </violation>
+    <violation beginline="178" author="hikaru">
+       Avoid unused local variables such as '$dbt'.
+    </violation>
+    <violation beginline="178" author="hikaru">
+       Avoid unused local variables such as '$now_timestamp'.
+    </violation>
+    <violation beginline="187" author="hikaru">
+       Avoid unused local variables such as '$t_money'.
+    </violation>
+    <violation beginline="188" author="hikaru">
+       Avoid unused local variables such as '$t_paybase'.
+    </violation>
+    <violation beginline="189" author="hikaru">
+       Avoid unused local variables such as '$t_deposit'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/classbasic.php">
+    <violation beginline="65" author="shengzhongxie">
+       Avoid variables with short names like $r. Configured minimum length is 3.
+    </violation>
+    <violation beginline="101" author="shengzhongxie">
+       The method showpage10() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="101" author="shengzhongxie">
+       The method showpage10() has an NPath complexity of 1440. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="101" author="shengzhongxie">
+       Avoid unused parameters such as '$own'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/enable_url.php">
+    <violation beginline="12" author="binson">
+       Avoid unused local variables such as '$result'.
+    </violation>
+    <violation beginline="17" author="binson">
+       Avoid variables with short names like $h. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/func.php">
+    <violation beginline="156" author="hikaru">
+       The class Cdb has 18 fields. Consider to redesign Cdb to keep the number of fields under 15.
+    </violation>
+    <violation beginline="156" author="hikaru">
+       The class Cdb has 11 methods. Consider refactoring Cdb to keep number of methods under 10.
+    </violation>
+    <violation beginline="225" author="hikaru">
+       Avoid variables with short names like $r. Configured minimum length is 3.
+    </violation>
+    <violation beginline="247" author="hikaru">
+       The method showpage10() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="247" author="hikaru">
+       The method showpage10() has an NPath complexity of 1440. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="247" author="hikaru">
+       Avoid unused parameters such as '$own'.
+    </violation>
+    <violation beginline="399" author="hikaru">
+       The class extlib has an overall complexity of 71 which is very high. The configured complexity threshold is 50.
+    </violation>
+    <violation beginline="464" author="hikaru">
+       Avoid variables with short names like $po. Configured minimum length is 3.
+    </violation>
+    <violation beginline="464" author="hikaru">
+       Avoid variables with short names like $ge. Configured minimum length is 3.
+    </violation>
+    <violation beginline="471" author="hikaru">
+       The method c_strong_type() has a Cyclomatic Complexity of 52. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="471" author="hikaru">
+       The method c_strong_type() has an NPath complexity of 269. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="471" author="hikaru">
+       The method c_strong_type() has 115 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="578" author="hikaru">
+       Avoid unused local variables such as '$H'.
+    </violation>
+    <violation beginline="578" author="hikaru">
+       Avoid variables with short names like $H. Configured minimum length is 3.
+    </violation>
+    <violation beginline="579" author="hikaru">
+       Avoid unused local variables such as '$D'.
+    </violation>
+    <violation beginline="579" author="hikaru">
+       Avoid variables with short names like $D. Configured minimum length is 3.
+    </violation>
+    <violation beginline="580" author="hikaru">
+       Avoid unused local variables such as '$C'.
+    </violation>
+    <violation beginline="580" author="hikaru">
+       Avoid variables with short names like $C. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/ip_cs.php">
+    <violation beginline="12" author="hikaru">
+       Avoid unused local variables such as '$result'.
+    </violation>
+    <violation beginline="17" author="hikaru">
+       Avoid variables with short names like $h. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/kolib.php">
+    <violation beginline="2" author="shengzhongxie">
+       The class extlib has an overall complexity of 71 which is very high. The configured complexity threshold is 50.
+    </violation>
+    <violation beginline="67" author="shengzhongxie">
+       Avoid variables with short names like $po. Configured minimum length is 3.
+    </violation>
+    <violation beginline="67" author="shengzhongxie">
+       Avoid variables with short names like $ge. Configured minimum length is 3.
+    </violation>
+    <violation beginline="74" author="shengzhongxie">
+       The method c_strong_type() has a Cyclomatic Complexity of 52. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="74" author="shengzhongxie">
+       The method c_strong_type() has an NPath complexity of 269. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="74" author="shengzhongxie">
+       The method c_strong_type() has 115 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="181" author="shengzhongxie">
+       Avoid unused local variables such as '$H'.
+    </violation>
+    <violation beginline="181" author="shengzhongxie">
+       Avoid variables with short names like $H. Configured minimum length is 3.
+    </violation>
+    <violation beginline="182" author="shengzhongxie">
+       Avoid unused local variables such as '$D'.
+    </violation>
+    <violation beginline="182" author="shengzhongxie">
+       Avoid variables with short names like $D. Configured minimum length is 3.
+    </violation>
+    <violation beginline="183" author="shengzhongxie">
+       Avoid unused local variables such as '$C'.
+    </violation>
+    <violation beginline="183" author="shengzhongxie">
+       Avoid variables with short names like $C. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/lib/Cy/Debug/Benchmark.php">
+    <violation beginline="78" author="Draco">
+       Avoid variables with short names like $t. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/lib/Cy/MVC/Router/QueryRouter.php">
+    <violation beginline="34" author="Draco">
+       Avoid unused local variables such as '$params'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/IndexController.php">
+    <violation beginline="11" author="Draco">
+       Avoid unused private fields such as '$m_tab'.
+    </violation>
+    <violation beginline="79" author="Draco">
+       The method dataAction() has a Cyclomatic Complexity of 18. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="79" author="Draco">
+       The method dataAction() has an NPath complexity of 375000000. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="84" author="Draco">
+       Avoid variables with short names like $g. Configured minimum length is 3.
+    </violation>
+    <violation beginline="85" author="Draco">
+       Avoid unused local variables such as '$oper'.
+    </violation>
+    <violation beginline="86" author="Draco">
+       Avoid unused local variables such as '$id'.
+    </violation>
+    <violation beginline="86" author="Draco">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="94" author="Draco">
+       Avoid variables with short names like $wh. Configured minimum length is 3.
+    </violation>
+    <violation beginline="95" author="Draco">
+       Avoid unused local variables such as '$searchOn'.
+    </violation>
+    <violation beginline="124" author="Draco">
+       Avoid unused local variables such as '$cnt'.
+    </violation>
+    <violation beginline="125" author="Draco">
+       Avoid unused local variables such as '$amttot'.
+    </violation>
+    <violation beginline="125" author="Draco">
+       Avoid unused local variables such as '$taxtot'.
+    </violation>
+    <violation beginline="125" author="Draco">
+       Avoid unused local variables such as '$total'.
+    </violation>
+    <violation beginline="125" author="Draco">
+       Avoid variables with short names like $i. Configured minimum length is 3.
+    </violation>
+    <violation beginline="145" author="Draco">
+       The method crudAction() has a Cyclomatic Complexity of 23. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="145" author="Draco">
+       The method crudAction() has an NPath complexity of 24433593750. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="148" author="Draco">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="151" author="Draco">
+       Avoid unused local variables such as '$link'.
+    </violation>
+    <violation beginline="152" author="Draco">
+       Avoid unused local variables such as '$note'.
+    </violation>
+    <violation beginline="153" author="Draco">
+       Avoid unused local variables such as '$ip'.
+    </violation>
+    <violation beginline="153" author="Draco">
+       Avoid variables with short names like $ip. Configured minimum length is 3.
+    </violation>
+    <violation beginline="154" author="Draco">
+       Avoid unused local variables such as '$www'.
+    </violation>
+    <violation beginline="155" author="Draco">
+       Avoid unused local variables such as '$m'.
+    </violation>
+    <violation beginline="155" author="Draco">
+       Avoid variables with short names like $m. Configured minimum length is 3.
+    </violation>
+    <violation beginline="156" author="Draco">
+       Avoid unused local variables such as '$ag'.
+    </violation>
+    <violation beginline="156" author="Draco">
+       Avoid variables with short names like $ag. Configured minimum length is 3.
+    </violation>
+    <violation beginline="157" author="Draco">
+       Avoid unused local variables such as '$hall_ag'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/modules/default/controllers/LinksController.php">
+    <violation beginline="76" author="Draco">
+       The method dataAction() has a Cyclomatic Complexity of 18. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="76" author="Draco">
+       The method dataAction() has an NPath complexity of 375000000. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="81" author="Draco">
+       Avoid variables with short names like $g. Configured minimum length is 3.
+    </violation>
+    <violation beginline="82" author="Draco">
+       Avoid unused local variables such as '$oper'.
+    </violation>
+    <violation beginline="83" author="Draco">
+       Avoid unused local variables such as '$id'.
+    </violation>
+    <violation beginline="83" author="Draco">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="90" author="Draco">
+       Avoid variables with short names like $wh. Configured minimum length is 3.
+    </violation>
+    <violation beginline="91" author="Draco">
+       Avoid unused local variables such as '$searchOn'.
+    </violation>
+    <violation beginline="120" author="Draco">
+       Avoid unused local variables such as '$cnt'.
+    </violation>
+    <violation beginline="121" author="Draco">
+       Avoid unused local variables such as '$amttot'.
+    </violation>
+    <violation beginline="121" author="Draco">
+       Avoid unused local variables such as '$taxtot'.
+    </violation>
+    <violation beginline="121" author="Draco">
+       Avoid unused local variables such as '$total'.
+    </violation>
+    <violation beginline="121" author="Draco">
+       Avoid variables with short names like $i. Configured minimum length is 3.
+    </violation>
+    <violation beginline="148" author="Draco">
+       The method crudAction() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="148" author="Draco">
+       The method crudAction() has an NPath complexity of 78125000. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="150" author="Draco">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="155" author="Draco">
+       Avoid variables with short names like $ip. Configured minimum length is 3.
+    </violation>
+    <violation beginline="157" author="Draco">
+       Avoid variables with short names like $m. Configured minimum length is 3.
+    </violation>
+    <violation beginline="158" author="Draco">
+       Avoid variables with short names like $ag. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/subhead.php">
+    <violation beginline="16" author="hikaru">
+       Classes should not have a constructor method with the same name as the class
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/bbcode.php">
+    <violation beginline="123" author="binson">
+       The function bbencode_second_pass() has 105 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="125" author="binson">
+       Avoid unused local variables such as '$lang'.
+    </violation>
+    <violation beginline="314" author="binson">
+       The function bbencode_first_pass_pda() has a Cyclomatic Complexity of 32. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="314" author="binson">
+       The function bbencode_first_pass_pda() has an NPath complexity of 86994. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="314" author="binson">
+       The function bbencode_first_pass_pda() has 235 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="325" author="binson">
+       Avoid unused local variables such as '$uid_length'.
+    </violation>
+    <violation beginline="487" author="binson">
+       Avoid excessively long variable names like $code_entities_replace. Keep variable name length under 20.
+    </violation>
+    <violation beginline="560" author="binson">
+       Avoid unused local variables such as '$lang'.
+    </violation>
+    <violation beginline="714" author="binson">
+       Avoid unused local variables such as '$arrSize'.
+    </violation>
+    <violation beginline="715" author="binson">
+       Avoid variables with short names like $x. Configured minimum length is 3.
+    </violation>
+    <violation beginline="717" author="binson">
+       Avoid unused local variables such as '$key'.
+    </violation>
+    <violation beginline="747" author="binson">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="778" author="binson">
+       Avoid variables with short names like $a. Configured minimum length is 3.
+    </violation>
+    <violation beginline="778" author="binson">
+       Avoid variables with short names like $b. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/center_man.php">
+    <violation beginline="288" author="binson">
+       The function check_link() has a Cyclomatic Complexity of 19. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="288" author="binson">
+       The function check_link() has an NPath complexity of 7560. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="288" author="binson">
+       The function check_link has 14 parameters. Consider to reduce parameter number under 10.
+    </violation>
+    <violation beginline="288" author="binson">
+       Avoid unused parameters such as '$w_group'.
+    </violation>
+    <violation beginline="288" author="binson">
+       Avoid unused parameters such as '$user_name_session'.
+    </violation>
+    <violation beginline="288" author="binson">
+       Avoid unused parameters such as '$director_session'.
+    </violation>
+    <violation beginline="288" author="binson">
+       Avoid unused parameters such as '$important'.
+    </violation>
+    <violation beginline="457" author="binson">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/center_man1.php">
+    <violation beginline="246" author="binson">
+       The function check_link() has a Cyclomatic Complexity of 18. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="246" author="binson">
+       The function check_link() has an NPath complexity of 6120. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="246" author="binson">
+       The function check_link has 11 parameters. Consider to reduce parameter number under 10.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/center_man_base.php">
+    <violation beginline="115" author="binson">
+       The function check_link() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/d_2_c.php">
+    <violation beginline="20" author="binson">
+       The method _2_Chinese() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="20" author="binson">
+       The method _2_Chinese() has an NPath complexity of 635. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="44" author="binson">
+       Avoid variables with short names like $j. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/functions_search.php">
+    <violation beginline="21" author="binson">
+       The function clean_words() has a Cyclomatic Complexity of 17. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="21" author="binson">
+       The function clean_words() has an NPath complexity of 588. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="91" author="binson">
+       Avoid unused parameters such as '$mode'.
+    </violation>
+    <violation beginline="104" author="binson">
+       The function add_search_words() has a Cyclomatic Complexity of 39. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="104" author="binson">
+       The function add_search_words() has an NPath complexity of 5000000. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="104" author="binson">
+       The function add_search_words() has 158 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="106" author="binson">
+       Avoid unused local variables such as '$lang'.
+    </violation>
+    <violation beginline="106" author="binson">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="182" author="binson">
+       Avoid unused local variables such as '$match_word'.
+    </violation>
+    <violation beginline="266" author="binson">
+       The function remove_common() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="266" author="binson">
+       The function remove_common() has an NPath complexity of 962. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="268" author="binson">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="340" author="binson">
+       The function remove_search_post() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="340" author="binson">
+       The function remove_search_post() has an NPath complexity of 236. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="342" author="binson">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="429" author="binson">
+       Avoid unused local variables such as '$board_config'.
+    </violation>
+    <violation beginline="429" author="binson">
+       Avoid unused local variables such as '$images'.
+    </violation>
+    <violation beginline="429" author="binson">
+       Avoid unused local variables such as '$theme'.
+    </violation>
+    <violation beginline="429" author="binson">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="430" author="binson">
+       Avoid unused local variables such as '$starttime'.
+    </violation>
+    <violation beginline="463" author="binson">
+       Avoid unused local variables such as '$page_title'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/maintain/work/work_add_act.php">
+    <violation beginline="10" author="binson">
+       Avoid unused parameters such as '$uid'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/pump/class.pump.php">
+    <violation beginline="2" author="somebady">
+       The class PUMP has 17 methods. Consider refactoring PUMP to keep number of methods under 10.
+    </violation>
+    <violation beginline="2" author="somebady">
+       The class PUMP has an overall complexity of 78 which is very high. The configured complexity threshold is 50.
+    </violation>
+    <violation beginline="4" author="somebady">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="10" author="somebady">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="40" author="somebady">
+       The method ListSeq() has a Cyclomatic Complexity of 11. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="40" author="somebady">
+       The method ListSeq() has an NPath complexity of 2700. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="40" author="somebady">
+       The method ListSeq() has 110 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="96" author="somebady">
+       Avoid variables with short names like $w. Configured minimum length is 3.
+    </violation>
+    <violation beginline="163" author="somebady">
+       Avoid variables with short names like $y. Configured minimum length is 3.
+    </violation>
+    <violation beginline="214" author="somebady">
+       The method GetOrderString() has a Cyclomatic Complexity of 30. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="214" author="somebady">
+       The method GetOrderString() has an NPath complexity of 2772. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="214" author="somebady">
+       The method GetOrderString() has 141 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="356" author="somebady">
+       Avoid variables with short names like $y. Configured minimum length is 3.
+    </violation>
+    <violation beginline="356" author="somebady">
+       Avoid variables with short names like $m. Configured minimum length is 3.
+    </violation>
+    <violation beginline="378" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="447" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="463" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="464" author="somebady">
+       Avoid variables with short names like $s. Configured minimum length is 3.
+    </violation>
+    <violation beginline="472" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="478" author="somebady">
+       Avoid variables with short names like $s. Configured minimum length is 3.
+    </violation>
+    <violation beginline="491" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="498" author="somebady">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/record/class.record.php">
+    <violation beginline="18" author="terry">
+       The class record has 1200 lines of code. Current threshold is 1000. Avoid really long classes.
+    </violation>
+    <violation beginline="18" author="terry">
+       The class record has 15 methods. Consider refactoring record to keep number of methods under 10.
+    </violation>
+    <violation beginline="18" author="terry">
+       The class record has an overall complexity of 262 which is very high. The configured complexity threshold is 50.
+    </violation>
+    <violation beginline="23" author="weird">
+       The method __construct() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="23" author="weird">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="75" author="weird">
+       The method query_ioratio() has a Cyclomatic Complexity of 28. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="75" author="weird">
+       The method query_ioratio() has an NPath complexity of 46800. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="75" author="weird">
+       The method query_ioratio() has 104 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="76" author="weird">
+       Avoid unused local variables such as '$global_vars'.
+    </violation>
+    <violation beginline="99" author="weird">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="180" author="weird">
+       The method query_new_ioratio() has a Cyclomatic Complexity of 22. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="180" author="weird">
+       The method query_new_ioratio() has an NPath complexity of 82945. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="180" author="weird">
+       The method query_new_ioratio() has 117 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="221" author="weird">
+       Avoid unused local variables such as '$today_gmt'.
+    </violation>
+    <violation beginline="298" author="weird">
+       The method query_set() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="298" author="weird">
+       The method query_set() has an NPath complexity of 2023. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="299" author="weird">
+       Avoid unused local variables such as '$today'.
+    </violation>
+    <violation beginline="376" author="weird">
+       The method query_score() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="376" author="weird">
+       The method query_score() has an NPath complexity of 720. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="377" author="weird">
+       Avoid unused local variables such as '$LOG_STR'.
+    </violation>
+    <violation beginline="377" author="weird">
+       Avoid unused local variables such as '$global_vars'.
+    </violation>
+    <violation beginline="399" author="weird">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="399" author="weird">
+       Avoid unused local variables such as '$ptype'.
+    </violation>
+    <violation beginline="444" author="weird">
+       The method query_wagers() has a Cyclomatic Complexity of 65. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="444" author="weird">
+       The method query_wagers() has an NPath complexity of 766886405. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="444" author="weird">
+       The method query_wagers() has 284 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="444" author="weird">
+       Avoid unused parameters such as '$php_self'.
+    </violation>
+    <violation beginline="444" author="weird">
+       Avoid unused parameters such as '$page_num'.
+    </violation>
+    <violation beginline="444" author="weird">
+       Avoid unused parameters such as '$page_key'.
+    </violation>
+    <violation beginline="570" author="weird">
+       Avoid unused local variables such as '$wagersUcIdKey'.
+    </violation>
+    <violation beginline="590" author="weird">
+       Avoid unused local variables such as '$limit_str'.
+    </violation>
+    <violation beginline="675" author="weird">
+       Avoid unused local variables such as '$record_data'.
+    </violation>
+    <violation beginline="675" author="weird">
+       Avoid unused local variables such as '$game'.
+    </violation>
+    <violation beginline="683" author="weird">
+       Avoid unused local variables such as '$wsid'.
+    </violation>
+    <violation beginline="700" author="weird">
+       Avoid unused local variables such as '$MEM_DATA'.
+    </violation>
+    <violation beginline="706" author="weird">
+       Avoid unused local variables such as '$casino'.
+    </violation>
+    <violation beginline="729" author="weird">
+       The method query_login() has a Cyclomatic Complexity of 23. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="729" author="weird">
+       The method query_login() has an NPath complexity of 245840. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="826" author="weird">
+       Avoid unused local variables such as '$value'.
+    </violation>
+    <violation beginline="844" author="weird">
+       Avoid unused local variables such as '$login_arr'.
+    </violation>
+    <violation beginline="863" author="weird">
+       The method query_limit() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="863" author="weird">
+       The method query_limit() has an NPath complexity of 15228. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="863" author="weird">
+       The method query_limit() has 102 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="863" author="weird">
+       Avoid unused parameters such as '$php_self'.
+    </violation>
+    <violation beginline="863" author="weird">
+       Avoid unused parameters such as '$page_num'.
+    </violation>
+    <violation beginline="863" author="weird">
+       Avoid unused parameters such as '$page_key'.
+    </violation>
+    <violation beginline="882" author="weird">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="882" author="weird">
+       Avoid unused local variables such as '$ptype'.
+    </violation>
+    <violation beginline="967" author="weird">
+       Avoid unused parameters such as '$php_self'.
+    </violation>
+    <violation beginline="967" author="weird">
+       Avoid unused parameters such as '$page_num'.
+    </violation>
+    <violation beginline="967" author="weird">
+       Avoid unused parameters such as '$page_key'.
+    </violation>
+    <violation beginline="968" author="weird">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="994" author="weird">
+       Avoid unused local variables such as '$count_s'.
+    </violation>
+    <violation beginline="1004" author="weird">
+       Avoid unused local variables such as '$uid'.
+    </violation>
+    <violation beginline="1009" author="weird">
+       The method query_close() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="1020" author="weird">
+       Avoid unused local variables such as '$gtype'.
+    </violation>
+    <violation beginline="1020" author="weird">
+       Avoid unused local variables such as '$ptype'.
+    </violation>
+    <violation beginline="1069" author="weird">
+       Avoid unused local variables such as '$count_w'.
+    </violation>
+    <violation beginline="1110" author="weird">
+       The method page_func() has a Cyclomatic Complexity of 25. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="1110" author="weird">
+       The method page_func() has an NPath complexity of 138870. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="1110" author="weird">
+       The method page_func() has 107 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="1161" author="weird">
+       Avoid unused local variables such as '$value_1'.
+    </violation>
+    <violation beginline="1167" author="weird">
+       Avoid unused local variables such as '$value_2'.
+    </violation>
+    <violation beginline="1186" author="weird">
+       Avoid unused local variables such as '$value_3'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/user_mang/control_mang.php">
+    <violation beginline="30" author="lee">
+       Avoid unused local variables such as '$value'.
+    </violation>
+    <violation beginline="31" author="lee">
+       Avoid variables with short names like $i. Configured minimum length is 3.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/user_mang/mem_search.php">
+    <violation beginline="55" author="ichiro">
+       Avoid variables with short names like $lv. Configured minimum length is 3.
+    </violation>
+    <violation beginline="55" author="ichiro">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="55" author="ichiro">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="68" author="ichiro">
+       Avoid unused local variables such as '$key'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/app/control/admin/user_mang/mem_search2.php">
+    <violation beginline="55" author="shengzhongxie">
+       Avoid variables with short names like $lv. Configured minimum length is 3.
+    </violation>
+    <violation beginline="55" author="shengzhongxie">
+       Avoid variables with short names like $id. Configured minimum length is 3.
+    </violation>
+    <violation beginline="55" author="shengzhongxie">
+       Avoid variables with short names like $db. Configured minimum length is 3.
+    </violation>
+    <violation beginline="70" author="shengzhongxie">
+       Avoid unused local variables such as '$key'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/donic_temp/move_member.php">
+    <violation beginline="519" author="terry">
+       The function account() has a Cyclomatic Complexity of 25. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="519" author="terry">
+       The function account() has an NPath complexity of 628342. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="519" author="terry">
+       The function account() has 165 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="685" author="terry">
+       The function conf() has a Cyclomatic Complexity of 110. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="685" author="terry">
+       The function conf() has an NPath complexity of 335734123623284736. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="685" author="terry">
+       The function conf() has 213 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="899" author="terry">
+       The function shark() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="899" author="terry">
+       The function shark() has 192 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="1144" author="ena">
+       The function conf2() has a Cyclomatic Complexity of 31. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="1144" author="ena">
+       The function conf2() has an NPath complexity of 135168. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="1144" author="ena">
+       The function conf2() has 174 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="1153" author="ena">
+       Avoid unused local variables such as '$ARR_GTYPE'.
+    </violation>
+    <violation beginline="1278" author="ena">
+       Avoid unused local variables such as '$key'.
+    </violation>
+  </file>
+  <file name="/var/www/project001/source/ball_service/www/donic_temp/move_member_bet88.php">
+    <violation beginline="373" author="terry">
+       The function account() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="373" author="terry">
+       The function account() has an NPath complexity of 144060. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="373" author="terry">
+       The function account() has 120 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="494" author="terry">
+       The function conf() has a Cyclomatic Complexity of 27. The configured cyclomatic complexity threshold is 10.
+    </violation>
+    <violation beginline="494" author="terry">
+       The function conf() has an NPath complexity of 860160. The configured NPath complexity threshold is 200.
+    </violation>
+    <violation beginline="494" author="terry">
+       The function conf() has 154 lines of code. Current threshold is set to 100. Avoid really long methods.
+    </violation>
+    <violation beginline="827" author="terry">
+       Avoid unused local variables such as '$key2'.
+    </violation>
+  </file>
+</pmd>
