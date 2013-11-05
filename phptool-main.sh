@@ -4,10 +4,10 @@ title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 # 2013-10-25 Imagine
 
 # 預設輸出xml目錄
-defOutputFolder=/var/www/project001/phptool/xml
+defOutputFolder=`pwd`"/phptool"
 
 # 子專案原始碼 存放路徑
-defSubPath=/var/www/project001/source
+defSubPath=`pwd`"/phptool"
 
 # 需要執行的專案路徑
 project=(
@@ -45,7 +45,7 @@ read -p "確定要執行(y/n)？" result
 
 			echo "執行指令:$ "bash phptool.sh $defOutputFolder/$downloaddir
 			#bash phptool.sh $defOutputFolder/${project[$i]}
-			test -e phptool.sh && bash phptool.sh $defOutputFolder/$downloaddir || echo "=> Error : 請在$downloaddir專案建立phptool.sh指令檔案"
+			test -e phptool-sub.sh && bash phptool.sh $defOutputFolder/$downloaddir || echo "=> Error : 請在$downloaddir專案建立phptool.sh指令檔案"
 			cd
 		done
 		;;

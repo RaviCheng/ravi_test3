@@ -55,7 +55,7 @@ class Controller_phptool extends Controller
         static::$type = Uri::segment(2);
         static::$source = Uri::segment(3);
         // 設定Xml路徑
-        static::$xmlPath = DOCROOT.'assets/phptool/xml/';
+        static::$xmlPath = PHPTOOL;
     }
 
     /**
