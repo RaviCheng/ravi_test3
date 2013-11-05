@@ -15,10 +15,15 @@
         "irc": "irc://irc.freenode.org/fuelphp",
         "forum": "http://fuelphp.com/forums"
     },
+    "require-dev": {
+        "phploc/phploc": "*",
+        "phpmd/phpmd" : "1.4.*",
+        "sebastian/phpcpd": "*"
+    },
     "require": {
         "php": ">=5.3.3",
         "monolog/monolog": "1.5.*",
-    	"fuelphp/upload": "2.0.1"
+        "fuelphp/upload": "2.0.1"
     },
     "suggest": {
         "mustache/mustache": "Allow Mustache templating with the Parser package",
@@ -27,7 +32,8 @@
         "mthaml/mthaml": "Allow Haml templating with Twig supports with the Parser package"
     },
     "config": {
-        "vendor-dir": "fuel/vendor"
+        "vendor-dir": "fuel/vendor",
+        "bin-dir": "bin"
     },
     "scripts": {
         "post-install-cmd": [
