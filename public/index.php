@@ -36,10 +36,6 @@ define('PKGPATH', realpath(__DIR__.'/../fuel/packages/').DIRECTORY_SEPARATOR);
  */
 define('COREPATH', realpath(__DIR__.'/../fuel/core/').DIRECTORY_SEPARATOR);
 
-/**
- * PHPTool Path
- */
-define('PHPTOOL', realpath(__DIR__.'/../phptool/').DIRECTORY_SEPARATOR);
 
 // Get the start time and memory for use later
 defined('FUEL_START_TIME') or define('FUEL_START_TIME', microtime(true));
