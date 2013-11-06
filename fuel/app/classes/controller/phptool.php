@@ -136,7 +136,7 @@ class Controller_phptool extends Controller
                         $data["sum"]++;
                     }
                 }
-            
+
             }
         }
 
