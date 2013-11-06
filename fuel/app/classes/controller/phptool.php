@@ -18,15 +18,12 @@ class Controller_phptool extends Controller
 {
 
     /**
-     * @var string is PHPTool Type
-     * (PHPLOC,PHPCPD,PHPMD)
+     * @var Array is PHPTool Group
+     * [use]=使用者選擇的phptool(ex：phploc)
+     * [source]=使用者選擇的專案xml File
      */
-    public static $type;
+    public static $phptool = array();
 
-    /**
-     * @var string is ProjectName
-     */
-    public static $source;
 
     /**
      * @var string is Project Xml Path
@@ -34,14 +31,9 @@ class Controller_phptool extends Controller
     public static $xmlPath;
 
     /**
-     * @var array is PHPTool List in View
+     * @var Array is LoadDir
      */
-    public static $phptool =
-        array(
-            'phploc'=>'PHPLOC',
-            'phpcpd'=>'PHPCPD',
-            'phpmd'=>'PHPMD'
-                );
+    public static $xmlDir;
 
 
     /**
@@ -52,102 +44,87 @@ class Controller_phptool extends Controller
     {
         parent::before();
 
-        static::$type = Uri::segment(2);
-        static::$source = Uri::segment(3);
+        static::$phptool = array(
+            "source" => Uri::segment(3),
+            "use"    => Uri::segment(2)
+        );
+
         // 設定Xml路徑
         static::$xmlPath = realpath(DOCROOT.'/../phptool').DIRECTORY_SEPARATOR;
+        static::$xmlDir  = File::read_dir(static::$xmlPath, 1, array('!^' => 'file',));
     }
+
 
     /**
      * PHPTool頁面首頁
      * 同一頁面包所有的分析工具，依照網址判斷工具名與專案名
+     *
      * @return void
      */
     public function action_index()
     {
-        //設定給View顯示於頁面的列表
-        $data['phptool']['list'] = static::$phptool;
+        $view = ViewModel::forge('phptool/index');
 
-        // 顯示搜尋結果xml底下的專案目錄（不顯示檔案）
-        $xmlDir = File::read_dir(static::$xmlPath, 1, array('!^' => 'file',));
-        $data['xmlDir'] = $xmlDir;
-
-        // 已選取專案才讀取xml資料
-        $data['phptool']['type'] = static::$type;
-        $data['phptool']['source'] = static::$source;
+        $loadFile = static::$xmlPath.implode("/", static::$phptool).'.xml';
 
         // 依選取的項目載入
-        if(static::$source){
-            if(file_exists(static::$xmlPath.static::$source.'/'.static::$type.'.xml')){
-                $xmlfile = simplexml_load_file(static::$xmlPath.static::$source.'/'.static::$type.'.xml');
-                switch(static::$type){
-                    case 'phploc';
-                        $data['phptool']['xmlfile'] = $xmlfile;
-                        break;
-                    case 'phpcpd';
-                        $data['phptool']['xmlfile'] = $xmlfile->duplication;
-                        break;
-                    case 'phpmd';
-                        $data['phptool']['xmlfile'] = $xmlfile->file;
-                        break;
-                }
-            }else{
-                $data["message"] = '哦哦！'.static::$xmlPath.static::$source.'/'.static::$type.'xml 不存在！
-                                   <br/>您可能尚未從伺服器執行執行分析結果。';
+        if (static::$phptool["source"]) {
+            if (file_exists($loadFile)) {
+                $xmlfile = simplexml_load_file($loadFile);
+                $view->set("xmlfile", $xmlfile)->auto_filter(false);
+            } else {
+                $view->set(
+                    "message",
+                    '哦哦！'.$loadFile.'xml 不存在！
+                                   <br/>您可能尚未從伺服器執行執行分析結果。'
+                )->auto_filter(false);
             }
         }
 
-        return View::forge('phptool/index', $data)->auto_filter(false);
+        return Response::forge($view);
     }
 
 
     /**
      * PHPMD分析工具（整合全部專案）
      * 載入全部專案的XML分析結果檔，再進行運算
+     *
      * @return void
      */
     public function action_phpmd()
     {
-        $data['phptool']['list'] = static::$phptool;
+        //共用index的ViewModel
+        $view = ViewModel::forge('phptool/index', 'view', null, 'phptool/phpmd');
 
-        // 顯示搜尋結果xml底下的專案目錄（不顯示檔案）
-        $xmlDir = File::read_dir(static::$xmlPath, 1, array('!^' => 'file',));
-        $data['xmlDir'] = $xmlDir;
-
-        // 已選取專案才讀取xml資料
-        $data['phptool']['type'] = static::$type;
 
         // 開始計算(依照使用者出現次數，出現一次加一，因來源檔出現一次只會顯示一行錯誤）
-        $data["sum"] = 0;
-        foreach ($xmlDir as $key => $value) {
-
-            if(file_exists(static::$xmlPath.$key.'phpmd.xml')){
-                $xmlfile = simplexml_load_file(static::$xmlPath.$key.'phpmd.xml');
-                $count = 0;
-                foreach($xmlfile->file as $item){
-                    $count++;
-                    foreach($item->violation as $violation){
+        $total   = 0;
+        $gitauth = array();
+        foreach (static::$xmlDir as $key => $value) {
+            $source = static::$xmlPath.$key.'phpmd.xml';
+            if (file_exists($source)) {
+                $xmlfile = simplexml_load_file($source);
+                $count   = 0;
+                foreach ($xmlfile->file as $item) {
+                    $count ++;
+                    foreach ($item->violation as $violation) {
                         //統計使用者
-                        $author = strval($violation['author']);
-                        $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[
-                                $author
-                            ] + 1;
+                        $author           = strval($violation['author']);
+                        $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[$author] + 1;
 
-                        $data["sum"]++;
+                        $total ++;
                     }
                 }
-
             }
         }
 
-        // 將結果插入$data給前台使用
-        $data["gitauth"] = array();
-
-        if(isset($gitauth)){
-            Arr::insert_assoc($data["gitauth"],$gitauth,0);
+        $view->set("total", $total);
+        $view->set("gitauth", $gitauth);
+        if ($total == 0) {
+            $view->set("message", '哦哦！目前沒有任何PHPMD的分析結果。')->auto_filter(false);
         }
 
-        return View::forge('phptool/phpmd', $data);
+        return Response::forge($view);
     }
 
 
