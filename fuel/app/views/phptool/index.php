@@ -230,6 +230,9 @@
 
 
 <?php
+if(isset($message)){ echo $message;}
+
+
 if (isset($phptool["xmlfile"])) {
     switch ($phptool["type"]) {
         case "phploc";

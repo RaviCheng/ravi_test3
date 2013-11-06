@@ -49,7 +49,7 @@ read -p "確定要執行(y/n)？" result
 			cd
 		done
 		;;
-# /var/www/blog/public/phptool/P0001
+
 esac
 ###############################################################
 
