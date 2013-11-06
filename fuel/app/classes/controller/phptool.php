@@ -78,17 +78,22 @@ class Controller_phptool extends Controller
 
         // 依選取的項目載入
         if(static::$source){
-            $xmlfile = simplexml_load_file(static::$xmlPath.static::$source.'/'.static::$type.'.xml');
-            switch(static::$type){
-                case 'phploc';
-                    $data['phptool']['xmlfile'] = $xmlfile;
-                    break;
-                case 'phpcpd';
-                    $data['phptool']['xmlfile'] = $xmlfile->duplication;
-                    break;
-                case 'phpmd';
-                    $data['phptool']['xmlfile'] = $xmlfile->file;
-                    break;
+            if(file_exists(static::$xmlPath.static::$source.'/'.static::$type.'.xml')){
+                $xmlfile = simplexml_load_file(static::$xmlPath.static::$source.'/'.static::$type.'.xml');
+                switch(static::$type){
+                    case 'phploc';
+                        $data['phptool']['xmlfile'] = $xmlfile;
+                        break;
+                    case 'phpcpd';
+                        $data['phptool']['xmlfile'] = $xmlfile->duplication;
+                        break;
+                    case 'phpmd';
+                        $data['phptool']['xmlfile'] = $xmlfile->file;
+                        break;
+                }
+            }else{
+                $data["message"] = '哦哦！'.static::$xmlPath.static::$source.'/'.static::$type.'xml 不存在！
+                                   <br/>您可能尚未從伺服器執行執行分析結果。';
             }
         }
 
@@ -116,25 +121,31 @@ class Controller_phptool extends Controller
         $data["sum"] = 0;
         foreach ($xmlDir as $key => $value) {
 
-            $xmlfile = simplexml_load_file(static::$xmlPath.$key.'phpmd.xml');
-            $count = 0;
-            foreach($xmlfile->file as $item){
-                $count++;
-                foreach($item->violation as $violation){
-                    //統計使用者
-                    $author = strval($violation['author']);
-                    $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[
-                            $author
-                        ] + 1;
+            if(file_exists(static::$xmlPath.$key.'phpmd.xml')){
+                $xmlfile = simplexml_load_file(static::$xmlPath.$key.'phpmd.xml');
+                $count = 0;
+                foreach($xmlfile->file as $item){
+                    $count++;
+                    foreach($item->violation as $violation){
+                        //統計使用者
+                        $author = strval($violation['author']);
+                        $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[
+                                $author
+                            ] + 1;
 
-                    $data["sum"]++;
+                        $data["sum"]++;
+                    }
                 }
+            
             }
         }
 
         // 將結果插入$data給前台使用
         $data["gitauth"] = array();
-        Arr::insert_assoc($data["gitauth"],$gitauth,0);
+
+        if(isset($gitauth)){
+            Arr::insert_assoc($data["gitauth"],$gitauth,0);
+        }
 
         return View::forge('phptool/phpmd', $data);
     }
