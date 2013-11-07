@@ -29,6 +29,7 @@
         }
         table td.a{
             padding-left: 25px;
+            color:#2F4F4F;
         }
         table td.b{
             padding-left: 50px;
@@ -275,7 +276,7 @@ if (isset($xmlfile)) {
     </tr>
     <tr>
         <td class="b"">Classes</td>
-        <td>'.$phploc->classes.'</td>
+        <td>'.$phploc->llocClasses.'</td>
     </tr>
     <tr>
         <td class="c">Average Class Length</td>
@@ -287,15 +288,15 @@ if (isset($xmlfile)) {
     </tr>
     <tr>
         <td class="b"">Functions</td>
-        <td>'.$phploc->functions.'</td>
+        <td>'.$phploc->llocFunctions.'</td>
     </tr>
     <tr>
         <td class="c">Average Function Length</td>
-        <td>'.$phploc->functions.'</td>
+        <td>'.$phploc->llocByNof.'</td>
     </tr>
     <tr>
-        <td class="c">Not in classes or functions</td>
-        <td>'.$phploc->llocByNof.'</td>
+        <td class="b">Not in classes or functions</td>
+        <td>'.$phploc->llocGlobal.'</td>
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -395,7 +396,7 @@ if (isset($xmlfile)) {
         <td>'.$phploc->concreteClasses.'</td>
     </tr>
     <tr>
-        <td class="b">Methods</td>
+        <td class="a">Methods</td>
         <td>'.$phploc->methods.'</td>
     </tr>
     <tr>
@@ -568,13 +569,13 @@ if (isset($xmlfile)) {
 }
 
 /* 對應不到的變數
-    $phploc->llocClasses.
+
     $phploc->llocGlobal
     $phploc->ccn
     $phploc->ccnMethods;
-    $phploc->testClasses
+
     $phploc->testMethods
-    $phploc->llocFunctions
+
 */
 ?>
 
