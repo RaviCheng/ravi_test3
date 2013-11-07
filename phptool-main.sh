@@ -11,8 +11,9 @@ defSubPath=`pwd`"/phptool"
 
 # 需要執行的專案路徑
 project=(
-		"git@rda-gitlab.vir888.com:rda/ball_service.git ball_service"
-		"https://github.com/fuel/fuel.git fuel"
+		"git@link1 coconut"
+		"git@link2 matrix"
+		"git@link3 shaddock"
 	  )
 # Test
 # Count : echo ${#project[@]}
@@ -20,6 +21,7 @@ project=(
 
 ###############################################################
 echo $title
+echo "如果要刪除原專案並重新下載(bash phptool.sh -d)"
 pram1=$1
 read -p "確定要執行(y/n)？" result
 	case "$result" in

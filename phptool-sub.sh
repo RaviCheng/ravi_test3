@@ -9,7 +9,7 @@ title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 PATH=$PATH:$PWD/bin
 
 # 預設輸出目錄
-defOutputFolder=public/phptool/xml
+defOutputFolder=xml
 
 # 預設要分析的檔案
 defPath=fuel/app/classes
