@@ -9,6 +9,7 @@
 
 use \Fuel\Core\File;
 use Fuel\Core\Input;
+use Fuel\Core\PhpErrorException;
 
 /**
  * PHPTool系統品質分析工具
@@ -70,8 +71,15 @@ class Controller_phptool extends Controller
         // 依選取的項目載入
         if (static::$phptool["source"]) {
             if (file_exists($loadFile)) {
-                $xmlfile = simplexml_load_file($loadFile);
-                $view->set("xmlfile", $xmlfile)->auto_filter(false);
+                try {
+                    $xmlfile = simplexml_load_file($loadFile);
+                    $view->set("xmlfile", $xmlfile)->auto_filter(false);
+                } catch (PhpErrorException $ex) {
+                    $view->set(
+                        "message",
+                        $ex->getMessage()
+                    );
+                }
             } else {
                 $view->set(
                     "message",
@@ -103,17 +111,24 @@ class Controller_phptool extends Controller
         foreach (static::$xmlDir as $key => $value) {
             $source = static::$xmlPath.$key.'phpmd.xml';
             if (file_exists($source)) {
-                $xmlfile = simplexml_load_file($source);
-                $count   = 0;
-                foreach ($xmlfile->file as $item) {
-                    $count ++;
-                    foreach ($item->violation as $violation) {
-                        //統計使用者
-                        $author           = strval($violation['author']);
-                        $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[$author] + 1;
+                try {
+                    $xmlfile = simplexml_load_file($source);
+                    $count   = 0;
+                    foreach ($xmlfile->file as $item) {
+                        $count ++;
+                        foreach ($item->violation as $violation) {
+                            //統計使用者
+                            $author           = strval($violation['author']);
+                            $gitauth[$author] = (! isset($gitauth[$author])) ? 1 : $gitauth[$author] + 1;
 
-                        $total ++;
+                            $total ++;
+                        }
                     }
+                } catch (PhpErrorException $ex) {
+                    $view->set(
+                        "message",
+                        $ex->getMessage()
+                    );
                 }
             }
         }

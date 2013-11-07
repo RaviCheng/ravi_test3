@@ -1,15 +1,12 @@
 #!/bin/sh
 # 輸出輸出php分析文件
 title="程式碼分析工具產生報表, 再利用網頁顯示解析"
-# 執行指令 bash phptool.sh
+# 執行指令 bash phptool-sub.sh
 # 參數 $1 = path 指定輸出路徑(控制端使用) 
 # 2013-10-25 Imagine
 
-# 加上PHPTool程式路徑
-PATH=$PATH:$PWD/bin
-
 # 預設輸出目錄
-defOutputFolder=xml
+defOutputFolder=$PWD
 
 # 預設要分析的檔案
 defPath=fuel/app/classes

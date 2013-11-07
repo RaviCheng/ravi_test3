@@ -1,7 +1,11 @@
 # 輸出輸出php分析文件
 title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 # 執行指令 bash phptool.sh
+# 參數 $1 = -d 刪除原專案並從Git下載 
 # 2013-10-25 Imagine
+
+# 加上PHPTool程式路徑
+PATH=$PATH:$PWD/bin
 
 # 預設輸出xml目錄
 defOutputFolder=`pwd`"/phptool"
@@ -21,7 +25,8 @@ project=(
 
 ###############################################################
 echo $title
-echo "如果要刪除原專案並重新下載(bash phptool.sh -d)"
+echo "其他參數：刪除原專案並從Git下載（bash phptool.sh -d）"
+echo ""
 pram1=$1
 read -p "確定要執行(y/n)？" result
 	case "$result" in
@@ -47,7 +52,7 @@ read -p "確定要執行(y/n)？" result
 
 			echo "執行指令:$ "bash phptool.sh $defOutputFolder/$downloaddir
 			#bash phptool.sh $defOutputFolder/${project[$i]}
-			test -e phptool-sub.sh && bash phptool.sh $defOutputFolder/$downloaddir || echo "=> Error : 請在$downloaddir專案建立phptool.sh指令檔案"
+			test -e phptool-sub.sh && bash phptool-sub.sh $defOutputFolder/$downloaddir || echo "=> Error : 請在$downloaddir專案建立phptool.sh指令檔案"
 			cd
 		done
 		;;
