@@ -6,12 +6,13 @@ title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 # 2013-10-25 Imagine
 
 # output name=phploc.xml , phpcpd.xml , phpmd.xml
+# 請放置在=專案名稱/phptool/phptool-sub.sh
 
 # 預設輸出目錄
 defOutputFolder=$PWD
 
 # 預設要分析的檔案
-defPath=fuel/app/classes
+defPath=../fuel/app/classes
 
 
 ###############################################################
