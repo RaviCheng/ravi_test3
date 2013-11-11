@@ -66,7 +66,7 @@ class Controller_phptool extends Controller
     {
         $view = ViewModel::forge('phptool/index');
 
-        $loadFile = static::$xmlPath.implode("/", static::$phptool).'.xml';
+        $loadFile = static::$xmlPath.implode("/phptool/", static::$phptool).'.xml';
 
         // 依選取的項目載入
         if (static::$phptool["source"]) {
@@ -109,7 +109,7 @@ class Controller_phptool extends Controller
         $total   = 0;
         $gitauth = array();
         foreach (static::$xmlDir as $key => $value) {
-            $source = static::$xmlPath.$key.'phpmd.xml';
+            $source = static::$xmlPath.$key.'/phptool/phpmd.xml';
             if (file_exists($source)) {
                 try {
                     $xmlfile = simplexml_load_file($source);
