@@ -29,6 +29,7 @@
         }
         table td.a{
             padding-left: 25px;
+            color:#2F4F4F;
         }
         table td.b{
             padding-left: 50px;
@@ -50,7 +51,7 @@
                 <a href="/" class="home has_bottom_tooltip" title="Dashboard"><h1>GITLAB</h1>
                 </a><span class='separator'></span>
             </div>
-            <h1 class='project_name'><span><a href="#">PHPTool</a> / <?php echo $phptool["type"];?></span></h1>
+            <h1 class='project_name'><span><a href="#">PHPTool</a> / <?php echo $phptool["use"];?></span></h1>
             <ul class='nav'>
                 <li>
                     <a>
@@ -104,7 +105,7 @@
                     -->
                 <li>
                     <a href="#" class="profile-pic" id="profile-pic"><img alt=""
-                                                                                        src="http://www.gravatar.com/avatar/3abb4325bbf0ce4d738a5857152d90bd?s=26&amp;d=mm"/>
+                                                                          src="http://www.gravatar.com/avatar/3abb4325bbf0ce4d738a5857152d90bd?s=26&amp;d=mm"/>
                     </a></li>
 
             </ul>
@@ -147,18 +148,16 @@
 <ul class='nav nav-tabs'>
 
     <?php
-    foreach ($phptool["list"] as $key => $value) {
-        if ($key == $phptool["type"]) {
+    foreach ($toolList as $key => $value) {
+        if ($key == $phptool["use"]) {
             echo '<li class="active">';
         } else {
             echo '<li>';
         }
-        echo '<a href="/phptool/'.$key.'" class="tab">'.$value.'</a>';
+        echo '<a href="/phptool/'.$key.'/'.$phptool["source"].'" class="tab">'.$value.'</a>';
     }
     ?>
 
-    <!--    </li><li class=""><a href="/phptool/phpcpd/" class="tab">PHPCPD</a>-->
-    <!--    </li><li class=""><a href="/phptool/phpmd/" class="tab">PHPMD</a>-->
     </li>
     <li class='pull-right'>
         <a href="#"><i class='icon-rss'></i>
@@ -210,10 +209,10 @@
                     } else {
                         echo '<li>';
                     }
-                    echo '<a href="/phptool/'.$phptool['type'].'/'.$source.'">'.$source.'</a>';
+                    echo '<a href="/phptool/'.$phptool['use'].'/'.$source.'">'.$source.'</a>';
                     echo '</li>';
                 }
-                if($phptool["type"]=="phpmd"){
+                if($phptool["use"]=="phpmd"){
                     echo '<li><a href="/phptool/phpmd">All</a></li>';
                 }
                 ?>
@@ -233,11 +232,11 @@
 if(isset($message)){ echo $message;}
 
 
-if (isset($phptool["xmlfile"])) {
-    switch ($phptool["type"]) {
+if (isset($xmlfile)) {
+    switch ($phptool["use"]) {
         case "phploc";
 
-            $phploc = $phptool["xmlfile"];
+            $phploc = $xmlfile;
             echo '
 <table align=left border=3>
     <tr>
@@ -277,7 +276,7 @@ if (isset($phptool["xmlfile"])) {
     </tr>
     <tr>
         <td class="b"">Classes</td>
-        <td>'.$phploc->classes.'</td>
+        <td>'.$phploc->llocClasses.'</td>
     </tr>
     <tr>
         <td class="c">Average Class Length</td>
@@ -289,15 +288,15 @@ if (isset($phptool["xmlfile"])) {
     </tr>
     <tr>
         <td class="b"">Functions</td>
-        <td>'.$phploc->functions.'</td>
+        <td>'.$phploc->llocFunctions.'</td>
     </tr>
     <tr>
         <td class="c">Average Function Length</td>
-        <td>'.$phploc->functions.'</td>
+        <td>'.$phploc->llocByNof.'</td>
     </tr>
     <tr>
-        <td class="c">Not in classes or functions</td>
-        <td>'.$phploc->llocByNof.'</td>
+        <td class="b">Not in classes or functions</td>
+        <td>'.$phploc->llocGlobal.'</td>
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -397,7 +396,7 @@ if (isset($phptool["xmlfile"])) {
         <td>'.$phploc->concreteClasses.'</td>
     </tr>
     <tr>
-        <td class="b">Methods</td>
+        <td class="a">Methods</td>
         <td>'.$phploc->methods.'</td>
     </tr>
     <tr>
@@ -457,7 +456,7 @@ if (isset($phptool["xmlfile"])) {
 
 
         case "phpcpd";
-            $phpcpd = $phptool["xmlfile"];
+            $phpcpd = $xmlfile->duplication;
 
 
             echo '<div class="accordion" id="accordion_phpcpd">';
@@ -491,7 +490,7 @@ if (isset($phptool["xmlfile"])) {
 
             break;
         case "phpmd";
-            $phpmd = $phptool["xmlfile"];
+            $phpmd = $xmlfile->file;
 
             ?>
             <div class="bs-example bs-example-tabs">
@@ -532,16 +531,10 @@ if (isset($phptool["xmlfile"])) {
 
                                 //統計使用者
                                 $author = $violation['author'];
-                                //$gitauth[$author] = (!isset($gitauth[$author]))? 0:$gitauth[$author]+1;
-
                                 $gitauth[strval($author)] = (! isset($gitauth[strval($author)])) ? 1 : $gitauth[strval(
                                         $author
                                     )] + 1;
 
-
-//                $gitauth[$author] = array();
-
-//                            gitauth->test = "";
                                 echo '<img src="assets/images/user.png"/> ';
                                 echo $violation['author'].'<br/>in ';
                                 echo $violation['beginline'].' : ';
@@ -567,13 +560,7 @@ if (isset($phptool["xmlfile"])) {
                 </div>
             </div><!-- /example -->
 
-
-
-
             <?php
-
-
-
             break;
 
     }
@@ -581,15 +568,14 @@ if (isset($phptool["xmlfile"])) {
 
 }
 
-
 /* 對應不到的變數
-    $phploc->llocClasses.
+
     $phploc->llocGlobal
     $phploc->ccn
     $phploc->ccnMethods;
-    $phploc->testClasses
+
     $phploc->testMethods
-    $phploc->llocFunctions
+
 */
 ?>
 
@@ -626,7 +612,6 @@ if (isset($phptool["xmlfile"])) {
                         <?php
 
                             foreach($gitauth as $key=>$data){
-                                //echo $key."=>".$data."<br/>";
                         ?>
                         {  y: <?php echo $data;?>, label: "<?php echo $key." ".round($data/$phpmd->sum*100,2);?>%", legendText: "<?php echo $key;?>" },
 
@@ -671,7 +656,6 @@ if (isset($phptool["xmlfile"])) {
                     <?php
 
                             foreach($gitauth as $key=>$data){
-                                //echo $key."=>".$data."<br/>";
                         ?>
                     {y: <?php echo $data;?>, label: "<?php echo $key;?>"},
 
@@ -688,5 +672,3 @@ if (isset($phptool["xmlfile"])) {
     phpmd2.render();
     <?php } ?>
 </script>
-
-

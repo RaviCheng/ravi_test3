@@ -16,10 +16,12 @@
         "forum": "http://fuelphp.com/forums"
     },
     "require-dev": {
+	"pdepend/pdepend" : "1.1.1",
         "phploc/phploc": "*",
-        "phpmd/phpmd" : "1.4.*",
+        "phpmd/phpmd" : "1.5.*",
         "sebastian/phpcpd": "*"
     },
+
     "require": {
         "php": ">=5.3.3",
         "monolog/monolog": "1.5.*",

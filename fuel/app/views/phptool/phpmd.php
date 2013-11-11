@@ -1,4 +1,3 @@
-<?php //print_r($author);?>
 <!DOCTYPE html>
 <html lang='zh'>
 <head>
@@ -83,7 +82,7 @@
                 -->
                 <li>
                     <a href="#" class="profile-pic" id="profile-pic"><img alt=""
-                                                                                        src="http://www.gravatar.com/avatar/3abb4325bbf0ce4d738a5857152d90bd?s=26&amp;d=mm"/>
+                                                                          src="http://www.gravatar.com/avatar/3abb4325bbf0ce4d738a5857152d90bd?s=26&amp;d=mm"/>
                     </a></li>
             </ul>
         </div>
@@ -121,106 +120,106 @@
     </div>
 </nav>
 <div class='container'>
-<div class='content'>
-<ul class='nav nav-tabs'>
+    <div class='content'>
+        <ul class='nav nav-tabs'>
 
-    <?php
-    foreach ($phptool["list"] as $key => $value) {
-        if ($key == $phptool["type"]) {
-            echo '<li class="active">';
-        } else {
-            echo '<li>';
-        }
-        echo '<a href="/phptool/'.$key.'" class="tab">'.$value.'</a>';
-    }
-    ?>
+            <?php
+            foreach ($toolList as $key => $value) {
+                if ($key == $phptool["use"]) {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+                echo '<a href="/phptool/'.$key.'" class="tab">'.$value.'</a>';
+            }
+            ?>
 
 
-    </li>
-    <li class='pull-right'>
-        <a href="#"><i class='icon-rss'></i>
-        </a></li>
-</ul>
+            </li>
+            <li class='pull-right'>
+                <a href="#"><i class='icon-rss'></i>
+                </a></li>
+        </ul>
 
-<div class='issues_content'>
-    <h3 class='page-title'>
-        Project
+        <div class='issues_content'>
+            <h3 class='page-title'>
+                Project
 
-<!--
-        <div class='pull-right'>
-            <div class='span6'>
-                <a href="#"
-                   class="btn btn-new pull-right" id="new_issue_link" title="New Issue"><i class='icon-plus'></i>
-                    New Issue
-                </a>
+                <!--
+                        <div class='pull-right'>
+                            <div class='span6'>
+                                <a href="#"
+                                   class="btn btn-new pull-right" id="new_issue_link" title="New Issue"><i class='icon-plus'></i>
+                                    New Issue
+                                </a>
 
-                <form accept-charset="UTF-8" action="/rda/challenge/issues" class="pull-right" data-remote="true"
-                      id="issue_search_form" method="get">
-                    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
-                    </div>
-                    <input id="search_status" name="status" type="hidden"/>
-                    <input id="search_assignee_id" name="assignee_id" type="hidden"/>
-                    <input id="search_milestone_id" name="milestone_id" type="hidden"/>
-                    <input id="search_label_name" name="label_name" type="hidden"/>
-                    <input class="input-xpadding issue_search input-xlarge append-right-10 search-text-input"
-                           id="issue_search" name="issue_search" placeholder="Filter by title or description"
-                           type="search"/>
+                                <form accept-charset="UTF-8" action="/rda/challenge/issues" class="pull-right" data-remote="true"
+                                      id="issue_search_form" method="get">
+                                    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
+                                    </div>
+                                    <input id="search_status" name="status" type="hidden"/>
+                                    <input id="search_assignee_id" name="assignee_id" type="hidden"/>
+                                    <input id="search_milestone_id" name="milestone_id" type="hidden"/>
+                                    <input id="search_label_name" name="label_name" type="hidden"/>
+                                    <input class="input-xpadding issue_search input-xlarge append-right-10 search-text-input"
+                                           id="issue_search" name="issue_search" placeholder="Filter by title or description"
+                                           type="search"/>
 
+                                </form>
+
+                            </div>
+                        </div>
+                    -->
+            </h3>
+        </div>
+        <div class='row'>
+            <div class='span3'>
+                <form accept-charset="UTF-8" action="/rda/challenge/issues" method="get">
+                    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
+                    <fieldset>
+                        <ul class='nav nav-pills nav-stacked'>
+                            <?php
+
+                            foreach ($xmlDir as $key => $value) {
+                                $source = substr($key, 0, - 1);
+                                echo '<li>';
+                                echo '<a href="/phptool/'.$phptool['use'].'/'.$source.'">'.$source.'</a>';
+                                echo '</li>';
+                            }
+                            echo '<li class="active"><a href="/phptool/phpmd">All</a></li>';
+
+                            ?>
+
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                    </fieldset>
                 </form>
+
+
+            </div>
+            <div class='span9 issues-holder'>
+
+
+                <?php
+                if(isset($message)){
+                    echo $message;
+                }else{
+                    ?>
+                    <div id="phpmd1" style="height: 500px; width: 500px;">
+                    </div>
+
+                    <br/><br/><br/><br/>
+                    <div id="phpmd2" style="height: 500px; width: 500px;">
+                    </div>
+                <?php
+                }
+                ?>
+
 
             </div>
         </div>
-    -->
-    </h3>
-</div>
-<div class='row'>
-<div class='span3'>
-    <form accept-charset="UTF-8" action="/rda/challenge/issues" method="get">
-        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-        <fieldset>
-            <ul class='nav nav-pills nav-stacked'>
-                <?php
-
-                foreach ($xmlDir as $key => $value) {
-                    $source = substr($key, 0, - 1);
-                    echo '<li>';
-                    echo '<a href="/phptool/'.$phptool['type'].'/'.$source.'">'.$source.'</a>';
-                    echo '</li>';
-                }
-                    echo '<li class="active"><a href="/phptool/phpmd">All</a></li>';
-
-                ?>
-
-            </ul>
-        </fieldset>
-        <fieldset>
-        </fieldset>
-    </form>
-
-
-</div>
-<div class='span9 issues-holder'>
-
-
-<?php
-if (isset($phptool["xmlfile"])) {
-    $phpmd = $phptool["xmlfile"];
-}
-?>
-
-
-                        <div id="phpmd1" style="height: 500px; width: 500px;">
-                        </div>
-
-                        <br/><br/><br/><br/>
-                        <div id="phpmd2" style="height: 500px; width: 500px;">
-                        </div>
-
-
-
-</div>
-</div>
-</div>
+    </div>
 </div>
 </body>
 </html>
@@ -234,7 +233,7 @@ if (isset($phptool["xmlfile"])) {
     var phpmd1 = new CanvasJS.Chart("phpmd1",
         {
             title: {
-                text: "Total <?php echo $sum;?>"
+                text: "Total <?php echo $total;?>"
             },
             data: [
                 {
@@ -247,9 +246,8 @@ if (isset($phptool["xmlfile"])) {
                         <?php
 
                             foreach($gitauth as $key=>$data){
-                                //echo $key."=>".$data."<br/>";
                         ?>
-                        {  y: <?php echo $data;?>, label: "<?php echo $key." ".round($data/$sum*100,2);?>%", legendText: "<?php echo $key;?>" },
+                        {  y: <?php echo $data;?>, label: "<?php echo $key." ".round($data/$total*100,2);?>%", legendText: "<?php echo $key;?>" },
 
                         <?php } ?>
 
@@ -292,7 +290,6 @@ if (isset($phptool["xmlfile"])) {
                     <?php
 
                             foreach($gitauth as $key=>$data){
-                                //echo $key."=>".$data."<br/>";
                         ?>
                     {y: <?php echo $data;?>, label: "<?php echo $key;?>"},
 
@@ -309,5 +306,3 @@ if (isset($phptool["xmlfile"])) {
     phpmd2.render();
 
 </script>
-
-
