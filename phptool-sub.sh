@@ -14,7 +14,16 @@ defOutputFolder=$PWD
 # 預設要分析的檔案
 defPath=../fuel/app/classes
 
+# 多個資料夾分析參數(dir1 dir2 dir3)
+defphploc=$defPath
 
+# 多個資料夾分析參數(dir1 dir2 dir3)
+defphpcpd=$defPath
+
+# 多個資料夾分析參數(dir1,dir2,dir3)
+defphpmd=$defPath
+
+cd ..
 ###############################################################
 
 
@@ -23,14 +32,14 @@ OutputFile() {
 	echo "STEP1 開始分析PHPLOC..."
 	test -e $defOutputFolder/phploc.xml && rm $defOutputFolder/phploc.xml
 	
-	phploc --log-xml $defOutputFolder/phploc.xml $defPath -q
+	phploc --log-xml $defOutputFolder/phploc.xml $defphploc -q
 
 	# PHPCPD
 	echo "STEP2 開始分析PHPCPD..."
 	test -e $defOutputFolder/phpcpd.xml  && rm $defOutputFolder/phpcpd.xml
 	
 	#不讓phpcpd display 內容
-	outphpcpd=`phpcpd --quiet --log-pmd $defOutputFolder/phpcpd.xml $defPath`
+	outphpcpd=`phpcpd --quiet --log-pmd $defOutputFolder/phpcpd.xml $defphpcpd`
 
 
 	# PHPMD
@@ -57,7 +66,7 @@ outphpmd() {
 	countmax=`phpmd $defPath text codesize,unusedcode,naming | wc -l`
 	countnosp=`expr $countmax - 1`
 
-	phpmd $defPath text codesize,unusedcode,naming |while read line
+	phpmd $defphpmd text codesize,unusedcode,naming |while read line
 	do 
 	 
 		# 先將第一串字串取出 filename:fileline
