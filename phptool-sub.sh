@@ -5,6 +5,8 @@ title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 # 參數 $1 = path 指定輸出路徑(控制端使用) 
 # 2013-10-25 Imagine
 
+# output name=phploc.xml , phpcpd.xml , phpmd.xml
+
 # 預設輸出目錄
 defOutputFolder=$PWD
 
