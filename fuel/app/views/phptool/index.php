@@ -20,21 +20,25 @@
         table {
             border: 0;
             font-family: arial;
-            font-size:14px;
+            font-size: 14px;
         }
+
         table td {
             border-color: #CCC;
-            border-bottom:1 solid #000000;
+            border-bottom: 1 solid #000000;
             line-height: 10px;
         }
-        table td.a{
+
+        table td.a {
             padding-left: 25px;
-            color:#2F4F4F;
+            color: #2F4F4F;
         }
-        table td.b{
+
+        table td.b {
             padding-left: 50px;
         }
-        table td.c{
+
+        table td.c {
             padding-left: 75px;
         }
 
@@ -51,7 +55,7 @@
                 <a href="/" class="home has_bottom_tooltip" title="Dashboard"><h1>GITLAB</h1>
                 </a><span class='separator'></span>
             </div>
-            <h1 class='project_name'><span><a href="#">PHPTool</a> / <?php echo $phptool["use"];?></span></h1>
+            <h1 class='project_name'><span><a href="#">PHPTool</a> / <?php echo $phptool["use"]; ?></span></h1>
             <ul class='nav'>
                 <li>
                     <a>
@@ -62,6 +66,7 @@
                     </a>
                 </li>
                 <li>
+
                     <!--
                     <div class='search'>
                         <form accept-charset="UTF-8" action="/search" class="navbar-form pull-left" method="get">
@@ -168,30 +173,25 @@
     <h3 class='page-title'>
         Project
 
-        <!--
+
         <div class='pull-right'>
             <div class='span6'>
-                <a href="#"
-                   class="btn btn-new pull-right" id="new_issue_link" title="New Issue"><i class='icon-plus'></i>
-                    New Issue
-                </a>
 
                 <form accept-charset="UTF-8" action="/rda/challenge/issues" class="pull-right" data-remote="true"
                       id="issue_search_form" method="get">
                     <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
                     </div>
-                    <input id="search_status" name="status" type="hidden"/>
-                    <input id="search_assignee_id" name="assignee_id" type="hidden"/>
-                    <input id="search_milestone_id" name="milestone_id" type="hidden"/>
-                    <input id="search_label_name" name="label_name" type="hidden"/>
-                    <input class="input-xpadding issue_search input-xlarge append-right-10 search-text-input"
-                           id="issue_search" name="issue_search" placeholder="Filter by title or description"
-                           type="search"/>
+                    <?php
+                    if($phptool["use"]=="phpmd"){
+                        echo "rule > codesize,unusedcode,naming";
+                    }
+                    ?>
+
                 </form>
 
             </div>
         </div>
-        -->
+
     </h3>
 </div>
 <div class='row'>
@@ -212,7 +212,7 @@
                     echo '<a href="/phptool/'.$phptool['use'].'/'.$source.'">'.$source.'</a>';
                     echo '</li>';
                 }
-                if($phptool["use"]=="phpmd"){
+                if ($phptool["use"] == "phpmd") {
                     echo '<li><a href="/phptool/phpmd">All</a></li>';
                 }
                 ?>
@@ -229,7 +229,9 @@
 
 
 <?php
-if(isset($message)){ echo $message;}
+if (isset($message)) {
+    echo $message;
+}
 
 
 if (isset($xmlfile)) {
@@ -505,6 +507,7 @@ if (isset($xmlfile)) {
                         </div>
 
                         <br/><br/><br/><br/>
+
                         <div id="phpmd2" style="height: 500px; width: 500px;">
                         </div>
                     </div>
@@ -530,12 +533,12 @@ if (isset($xmlfile)) {
                             foreach ($data->violation as $violation) {
 
                                 //統計使用者
-                                $author = $violation['author'];
+                                $author                   = $violation['author'];
                                 $gitauth[strval($author)] = (! isset($gitauth[strval($author)])) ? 1 : $gitauth[strval(
                                         $author
                                     )] + 1;
 
-                                echo '<img src="assets/images/user.png"/> ';
+                                echo '<img src="/assets/root/img/user.png"/> ';
                                 echo $violation['author'].'<br/>in ';
                                 echo $violation['beginline'].' : ';
                                 echo $data->violation.'<br/><br/>';
@@ -568,15 +571,6 @@ if (isset($xmlfile)) {
 
 }
 
-/* 對應不到的變數
-
-    $phploc->llocGlobal
-    $phploc->ccn
-    $phploc->ccnMethods;
-
-    $phploc->testMethods
-
-*/
 ?>
 
 </div>
@@ -588,87 +582,77 @@ if (isset($xmlfile)) {
 
 
 <script type="text/javascript">
+    function SetChart(title, jsonString) {
 
-    <?php
-    if(isset($gitauth)){
-    $phpmd->sum = 0;
-    foreach($gitauth as $key=>$data){
-        $phpmd->sum += $data;
-    }
-     ?>
-    var phpmd1 = new CanvasJS.Chart("phpmd1",
-        {
+        var phpmd1 = new CanvasJS.Chart("phpmd1",
+            {
+                title: {
+                    text: title
+                },
+                data: [
+                    {
+                        type: "doughnut",
+                        startAngle: 60,
+                        toolTipContent: "{y} ",
+                        showInLegend: true,
+                        dataPoints: jsonString
+                    }
+                ]
+            });
+        phpmd1.render();
+
+
+        var phpmd2 = new CanvasJS.Chart("phpmd2", {
             title: {
-                text: "Total <?php echo $phpmd->sum;?>"
+                text: ""
+            },
+            axisX: {
+                interval: 1,
+                gridThickness: 0,
+                labelFontSize: 20,
+                labelFontStyle: "normal",
+                labelFontWeight: "normal",
+                labelFontFamily: "Lucida Sans Unicode"
+            },
+            axisY2: {
+                interlacedColor: "rgba(1,77,101,.2)",
+                gridColor: "rgba(1,77,101,.1)"
             },
             data: [
                 {
-                    type: "doughnut",
-                    startAngle: 60,
-                    toolTipContent: "{y} ",
-
-                    showInLegend: true,
-                    dataPoints: [
-                        <?php
-
-                            foreach($gitauth as $key=>$data){
-                        ?>
-                        {  y: <?php echo $data;?>, label: "<?php echo $key." ".round($data/$phpmd->sum*100,2);?>%", legendText: "<?php echo $key;?>" },
-
-                        <?php } ?>
-
-                    ]
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    color: "#014D65",
+                    dataPoints: jsonString
                 }
             ]
         });
-
-    phpmd1.render();
-
-    var phpmd2 = new CanvasJS.Chart("phpmd2", {
-
-        title: {
-            text: ""
-
-        },
-        axisX: {
-            interval: 1,
-            gridThickness: 0,
-            labelFontSize: 20,
-            labelFontStyle: "normal",
-            labelFontWeight: "normal",
-            labelFontFamily: "Lucida Sans Unicode"
-
-        },
-        axisY2: {
-            interlacedColor: "rgba(1,77,101,.2)",
-            gridColor: "rgba(1,77,101,.1)"
-
-        },
-
-        data: [
-            {
-                type: "bar",
-                name: "companies",
-                axisYType: "secondary",
-                color: "#014D65",
-                dataPoints: [
-
-                    <?php
-
-                            foreach($gitauth as $key=>$data){
-                        ?>
-                    {y: <?php echo $data;?>, label: "<?php echo $key;?>"},
-
-
-                    <?php } ?>
-
-
-                ]
-            }
-
-        ]
-    });
-
-    phpmd2.render();
-    <?php } ?>
+        phpmd2.render();
+    }
 </script>
+
+<?php
+if (isset($gitauth)) {
+    $phpmd->sum = 0;
+
+    $jsonString = array();
+    $phpmd->sum = array_sum($gitauth);
+    foreach ($gitauth as $key => $data) {
+        array_unshift(
+            $jsonString,
+            array(
+                "y"          => $data,
+                "label"      => $key." ".round($data/$phpmd->sum*100,2)."%",
+                "legendText" => $key
+            )
+        );
+    }
+
+    $jsonString = Arr::sort($jsonString, 'y');
+
+    echo '<script>
+            SetChart("Total '.$phpmd->sum.'",'.json_encode($jsonString).');
+          </script>';
+}
+?>

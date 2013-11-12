@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+use Fuel\Core\Arr;
 use \Fuel\Core\File;
 use Fuel\Core\Input;
 use Fuel\Core\PhpErrorException;
@@ -83,7 +84,7 @@ class Controller_phptool extends Controller
             } else {
                 $view->set(
                     "message",
-                    '哦哦！'.$loadFile.'xml 不存在！
+                    '哦哦！'.$loadFile.' 不存在！
                                    <br/>您可能尚未從伺服器執行執行分析結果。'
                 )->auto_filter(false);
             }
@@ -133,11 +134,27 @@ class Controller_phptool extends Controller
             }
         }
 
+
+        $jsonString = array();
+        foreach ($gitauth as $key => $data) {
+            array_unshift(
+                $jsonString,
+                array(
+                    "y"          => $data,
+                    "label"      => $key." ".round($data/$total*100,2)."%",
+                    "legendText" => $key
+                )
+            );
+        }
+
+
         $view->set("total", $total);
-        $view->set("gitauth", $gitauth);
+        $view->set("gitauth",Arr::sort($jsonString, 'y') );
         if ($total == 0) {
             $view->set("message", '哦哦！目前沒有任何PHPMD的分析結果。')->auto_filter(false);
         }
+
+
 
         return Response::forge($view);
     }
