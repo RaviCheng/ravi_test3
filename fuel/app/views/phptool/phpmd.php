@@ -145,31 +145,21 @@
             <h3 class='page-title'>
                 Project
 
-                <!--
-                        <div class='pull-right'>
-                            <div class='span6'>
-                                <a href="#"
-                                   class="btn btn-new pull-right" id="new_issue_link" title="New Issue"><i class='icon-plus'></i>
-                                    New Issue
-                                </a>
+                <div class='pull-right'>
+                    <div class='span6'>
 
-                                <form accept-charset="UTF-8" action="/rda/challenge/issues" class="pull-right" data-remote="true"
-                                      id="issue_search_form" method="get">
-                                    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
-                                    </div>
-                                    <input id="search_status" name="status" type="hidden"/>
-                                    <input id="search_assignee_id" name="assignee_id" type="hidden"/>
-                                    <input id="search_milestone_id" name="milestone_id" type="hidden"/>
-                                    <input id="search_label_name" name="label_name" type="hidden"/>
-                                    <input class="input-xpadding issue_search input-xlarge append-right-10 search-text-input"
-                                           id="issue_search" name="issue_search" placeholder="Filter by title or description"
-                                           type="search"/>
-
-                                </form>
-
+                        <form accept-charset="UTF-8" action="/rda/challenge/issues" class="pull-right" data-remote="true"
+                              id="issue_search_form" method="get">
+                            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
                             </div>
-                        </div>
-                    -->
+
+                              rule > codesize,unusedcode,naming
+
+
+                        </form>
+
+                    </div>
+                </div>
             </h3>
         </div>
         <div class='row'>
