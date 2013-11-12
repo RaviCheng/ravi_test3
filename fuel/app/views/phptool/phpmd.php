@@ -210,7 +210,7 @@
                     </div>
 
                     <br/><br/><br/><br/>
-                    <div id="phpmd2" style="">
+                    <div id="phpmd2" style="height: 900px;">
                     </div>
                 <?php
                 }

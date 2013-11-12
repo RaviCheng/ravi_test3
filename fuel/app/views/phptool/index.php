@@ -542,7 +542,7 @@ if (isset($xmlfile)) {
                                         $author
                                     )] + 1;
 
-                                echo '<img src="assets/images/user.png"/> ';
+                                echo '<img src="/assets/root/img/user.png"/> ';
                                 echo $violation['author'].'<br/>in ';
                                 echo $violation['beginline'].' : ';
                                 echo $data->violation.'<br/><br/>';
