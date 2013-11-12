@@ -206,11 +206,11 @@
                     echo $message;
                 }else{
                     ?>
-                    <div id="phpmd1" style="height: 500px; width: 500px;">
+                    <div id="phpmd1" style="height: 500px; width: 900px;">
                     </div>
 
                     <br/><br/><br/><br/>
-                    <div id="phpmd2" style="height: 500px; width: 500px;">
+                    <div id="phpmd2" style="">
                     </div>
                 <?php
                 }
@@ -288,14 +288,3 @@
 </script>
 
 
-<?php
-//if (isset($gitauth)) {
-//    $total->sum = 0;
-//
-//
-//
-//    echo '<script>
-//            SetChart("Total '.$total->sum.'",'.json_encode($jsonString).');
-//          </script>';
-//}
-?>
