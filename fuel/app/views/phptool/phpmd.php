@@ -242,16 +242,8 @@
                     toolTipContent: "{y} ",
 
                     showInLegend: true,
-                    dataPoints: [
-                        <?php
+                    dataPoints: <?php echo json_encode($gitauth);?>
 
-                            foreach($gitauth as $key=>$data){
-                        ?>
-                        {  y: <?php echo $data;?>, label: "<?php echo $key." ".round($data/$total*100,2);?>%", legendText: "<?php echo $key;?>" },
-
-                        <?php } ?>
-
-                    ]
                 }
             ]
         });
@@ -285,19 +277,7 @@
                 name: "companies",
                 axisYType: "secondary",
                 color: "#014D65",
-                dataPoints: [
-
-                    <?php
-
-                            foreach($gitauth as $key=>$data){
-                        ?>
-                    {y: <?php echo $data;?>, label: "<?php echo $key;?>"},
-
-
-                    <?php } ?>
-
-
-                ]
+                dataPoints: <?php echo json_encode($gitauth);?>
             }
 
         ]
@@ -306,3 +286,16 @@
     phpmd2.render();
 
 </script>
+
+
+<?php
+//if (isset($gitauth)) {
+//    $total->sum = 0;
+//
+//
+//
+//    echo '<script>
+//            SetChart("Total '.$total->sum.'",'.json_encode($jsonString).');
+//          </script>';
+//}
+?>

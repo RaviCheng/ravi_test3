@@ -137,6 +137,7 @@ else
 	read -p "確定要執行(y/n)？" result
 	case "$result" in
 	y)	
+	PATH=$PATH:~challenge/bin
 	OutputFile $defOutputFolder
 	echo "分析程序結束，請開啟 host/phptool 查詢報表"
 	;;

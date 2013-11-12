@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+use Fuel\Core\Arr;
 use \Fuel\Core\File;
 use Fuel\Core\Input;
 use Fuel\Core\PhpErrorException;
@@ -66,7 +67,7 @@ class Controller_phptool extends Controller
     {
         $view = ViewModel::forge('phptool/index');
 
-        $loadFile = static::$xmlPath.implode("/phptool/", static::$phptool).'.xml';
+        $loadFile = static::$xmlPath.implode("/", static::$phptool).'.xml';
 
         // 依選取的項目載入
         if (static::$phptool["source"]) {
@@ -109,7 +110,7 @@ class Controller_phptool extends Controller
         $total   = 0;
         $gitauth = array();
         foreach (static::$xmlDir as $key => $value) {
-            $source = static::$xmlPath.$key.'/phptool/phpmd.xml';
+            $source = static::$xmlPath.$key.'phpmd.xml';
             if (file_exists($source)) {
                 try {
                     $xmlfile = simplexml_load_file($source);
@@ -133,11 +134,27 @@ class Controller_phptool extends Controller
             }
         }
 
+
+        $jsonString = array();
+        foreach ($gitauth as $key => $data) {
+            array_unshift(
+                $jsonString,
+                array(
+                    "y"          => $data,
+                    "label"      => $key." ".round($data/$total*100,2)."%",
+                    "legendText" => $key
+                )
+            );
+        }
+
+
         $view->set("total", $total);
-        $view->set("gitauth", $gitauth);
+        $view->set("gitauth",Arr::sort($jsonString, 'y') );
         if ($total == 0) {
             $view->set("message", '哦哦！目前沒有任何PHPMD的分析結果。')->auto_filter(false);
         }
+
+
 
         return Response::forge($view);
     }
