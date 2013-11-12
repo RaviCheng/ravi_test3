@@ -27,9 +27,9 @@ echo $title
 echo "其他參數：刪除原專案並從Git下載（bash phptool.sh -d）"
 echo ""
 pram1=$1
-read -p "確定要執行(y/n)？" result
-	case "$result" in
-	y)
+#read -p "確定要執行(y/n)？" result
+#	case "$result" in
+#	y)
 		  ls $defSubPath |while read line
 		  do
 		 	echo ""
@@ -57,9 +57,9 @@ read -p "確定要執行(y/n)？" result
 			test -e phptool-sub.sh && bash phptool-sub.sh $defOutputFolder/$xmlpath || echo "=> Error : 請在$downloaddir專案建立phptool/phptool.sh指令檔案"
 			cd
 		done
-		;;
+#		;;
 
-esac
+#esac
 ###############################################################
 
 
