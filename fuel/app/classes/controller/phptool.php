@@ -83,7 +83,7 @@ class Controller_phptool extends Controller
             } else {
                 $view->set(
                     "message",
-                    '哦哦！'.$loadFile.'xml 不存在！
+                    '哦哦！'.$loadFile.' 不存在！
                                    <br/>您可能尚未從伺服器執行執行分析結果。'
                 )->auto_filter(false);
             }

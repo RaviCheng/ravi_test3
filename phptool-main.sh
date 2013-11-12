@@ -15,6 +15,8 @@ defOutputFolder=`pwd`"/phptool"
 # 子專案原始碼 存放路徑
 defSubPath=`pwd`"/phptool"
 
+# tmptool dir
+deftmptool=`pwd`"/tmptool"
 
 # Test
 # Count : echo ${#project[@]}
@@ -45,7 +47,7 @@ read -p "確定要執行(y/n)？" result
 			test -e $defOutputFolder/$xmlpath && echo "path check ok" || mkdir $defOutputFolder/$xmlpath
 
 		 	if [ "$pram1" = "-cp" ]; then
-			 	cp -f tmptool/$downloaddir/phptool-sub.sh $defOutputFolder/$xmlpath
+			 	cp -f $deftmptool/$downloaddir/phptool-sub.sh $defOutputFolder/$xmlpath
 		 	fi
 
 			cd $defSubPath/$xmlpath

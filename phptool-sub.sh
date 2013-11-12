@@ -12,7 +12,7 @@ title="程式碼分析工具產生報表, 再利用網頁顯示解析"
 defOutputFolder=$PWD
 
 # 預設要分析的檔案
-defPath=../fuel/app/classes
+defPath="/fuel/app/classes"
 
 # 多個資料夾分析參數(dir1 dir2 dir3)
 defphploc=$defPath
@@ -63,7 +63,7 @@ outphpmd() {
 	echo '<pmd version="1.5.0" timestamp="'$filetime'">'
 
 	# 先取得資料行數 用來比對 最後一筆
-	countmax=`phpmd $defPath text codesize,unusedcode,naming | wc -l`
+	countmax=`phpmd $defphpmd text codesize,unusedcode,naming | wc -l`
 	countnosp=`expr $countmax - 1`
 
 	phpmd $defphpmd text codesize,unusedcode,naming |while read line
