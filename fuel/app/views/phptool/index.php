@@ -181,11 +181,12 @@
                       id="issue_search_form" method="get">
                     <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/>
                     </div>
-                    <?php
-                    if($phptool["use"]=="phpmd"){
-                        echo "rule > codesize,unusedcode,naming";
-                    }
-                    ?>
+                    <?php if($phptool["use"]=="phpmd"):?>
+                        codesize(程式碼過長),<br/>
+                        unusedcode(宣告但未使用),<br/>
+                        naming(命名問題)
+                    <?php endif ?>
+
 
                 </form>
 
@@ -202,7 +203,7 @@
             <ul class='nav nav-pills nav-stacked'>
                 <?php
 
-                foreach ($xmlDir as $key => $value) {
+                 foreach ($xmlDir as $key => $value) {
                     $source = substr($key, 0, - 1);
                     if ($source == $phptool["source"]) {
                         echo '<li class="active">';
@@ -482,7 +483,7 @@ if (isset($xmlfile)) {
                 echo '</div>';
                 echo '<div id="collapse'.$count.'" class="accordion-body collapse" style="height: 0px;">';
                 echo '<div class="accordion-inner">';
-                echo nl2br($data->codefragment);
+                echo nl2br(htmlentities($data->codefragment));
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
